@@ -21,3 +21,9 @@ globals*.sql
 backups
 respaldos*
 .vscode
+
+frontend/node_modules
+frontend/dist
+docs
+tests
+*.log

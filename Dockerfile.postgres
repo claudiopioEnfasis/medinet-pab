@@ -1,0 +1,15 @@
+# Conserva PostgreSQL 17.11 y su entrypoint; actualiza solo el auxiliar de UID.
+FROM golang:1.27.3-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS gosu-builder
+ENV CGO_ENABLED=0
+# Conserva gosu 1.19 y corrige también sus dos dependencias transitivas.
+RUN go mod download github.com/tianon/gosu@6456aaa0f3c854d199d0f037f068eb97515b7513 \
+    && cp -R /go/pkg/mod/github.com/tianon/gosu@v0.0.0-20250923190938-6456aaa0f3c8 /build \
+    && chmod -R u+w /build \
+    && cd /build \
+    && go get github.com/moby/sys/user@v0.4.1 golang.org/x/sys@v0.44.0 \
+    && go build -mod=readonly -buildvcs=false -trimpath -ldflags=-w -o /go/bin/gosu .
+
+FROM postgres:17.11-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b
+RUN apk upgrade --no-cache
+COPY --from=gosu-builder /go/bin/gosu /usr/local/bin/gosu
+RUN gosu --version && gosu postgres id

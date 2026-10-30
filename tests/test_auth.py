@@ -3,6 +3,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 import jwt
+import pytest
 
 
 def test_health_public(client):
@@ -66,3 +67,22 @@ def test_token_with_incorrect_signature_rejected(client):
         "different-secret-at-least-32-characters-long", algorithm="HS256",
     )
     assert client.get("/auth/me", headers={"Authorization": f"Bearer {forged}"}).status_code == 401
+
+
+@pytest.mark.parametrize("claim,value", [("exp", []), ("nbf", []), ("iat", {})])
+def test_malformed_numeric_claim_returns_401(client, claim, value):
+    """Los payloads firmados malformados deben producir 401, nunca error 500."""
+    now = int(datetime.now(timezone.utc).timestamp())
+    payload = {"sub": "1", "iss": "medinet-pab", "iat": now, "exp": now + 60}
+    payload[claim] = value
+    token = jwt.encode(payload, os.environ["JWT_SECRET"], algorithm="HS256")
+    assert client.get("/auth/me", headers={"Authorization": f"Bearer {token}"}).status_code == 401
+
+
+@pytest.mark.parametrize("claim", ["sub", "iss", "iat", "exp"])
+def test_token_missing_required_claim_returns_401(client, claim):
+    now = int(datetime.now(timezone.utc).timestamp())
+    payload = {"sub": "1", "iss": "medinet-pab", "iat": now, "exp": now + 60}
+    del payload[claim]
+    token = jwt.encode(payload, os.environ["JWT_SECRET"], algorithm="HS256")
+    assert client.get("/auth/me", headers={"Authorization": f"Bearer {token}"}).status_code == 401

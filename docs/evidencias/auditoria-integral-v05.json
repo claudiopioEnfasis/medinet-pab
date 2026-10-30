@@ -1,0 +1,327 @@
+{
+  "date_utc": "2026-10-30T16:15:22.382364+00:00",
+  "scope": "Código e imágenes verificados y activados en la instalación original tras autorización; conexión runtime restringida en uso.",
+  "git": {
+    "branch": "main",
+    "head": "a1d0b4ca08360b9acafda87eb860e61b3fe023a1",
+    "commit_created": false,
+    "push_performed": false,
+    "remote_actions_verified": false
+  },
+  "tests": {
+    "tests": 60,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_cases": [
+    "test_health_and_swagger",
+    "test_create_surgery_and_list",
+    "test_prevents_same_room",
+    "test_prevents_same_patient",
+    "test_prevents_same_doctor",
+    "test_allows_non_overlapping_interval",
+    "test_time_validation",
+    "test_duplicate_room_code",
+    "test_bad_status_transition",
+    "test_started_surgery_sets_room_occupied",
+    "test_availability",
+    "test_unknown_staff_rejected",
+    "test_availability_invalid_interval_returns_422",
+    "test_health_public",
+    "test_private_without_auth",
+    "test_login_success_and_wrong_password",
+    "test_invalid_token_rejected",
+    "test_viewer_cannot_modify",
+    "test_coordinator_cannot_create_patients",
+    "test_login_locked_after_five_attempts",
+    "test_expired_token_rejected",
+    "test_token_with_incorrect_signature_rejected",
+    "test_malformed_numeric_claim_returns_401[exp-value0]",
+    "test_malformed_numeric_claim_returns_401[nbf-value1]",
+    "test_malformed_numeric_claim_returns_401[iat-value2]",
+    "test_token_missing_required_claim_returns_401[sub]",
+    "test_token_missing_required_claim_returns_401[iss]",
+    "test_token_missing_required_claim_returns_401[iat]",
+    "test_token_missing_required_claim_returns_401[exp]",
+    "test_parallel_reservations_each_resource[room]",
+    "test_parallel_reservations_each_resource[patient]",
+    "test_parallel_reservations_each_resource[staff]",
+    "test_parallel_start_shared_resource[patient]",
+    "test_parallel_start_shared_resource[staff]",
+    "test_parallel_status_same_surgery",
+    "test_parallel_failed_logins_cannot_bypass_lock",
+    "test_v03_baseline_preserves_existing_data",
+    "test_fresh_migration_builds_initial_schema",
+    "test_postgres_parallel_reservations",
+    "test_migrations_and_runtime_least_privilege",
+    "test_seed_complete_demo_and_four_states",
+    "test_seed_rerun_next_day_changes_no_records",
+    "test_seed_preserves_existing_resources_and_user",
+    "test_seed_no_overlapping_room_patient_or_staff",
+    "test_seed_failure_rolls_back_every_insert",
+    "test_two_seeds_are_serialized_without_duplicates",
+    "test_seed_refuses_sqlite",
+    "test_health_ready",
+    "test_openapi_documents_errors",
+    "test_coordinator_can_schedule",
+    "test_sanitizing_room_cannot_be_scheduled",
+    "test_cancelled_surgery_frees_reservations",
+    "test_rejects_duplicate_medical_staff",
+    "test_rejects_sql_injection_in_reference",
+    "test_invalid_surgery_id_returns_404",
+    "test_cannot_start_two_surgeries_with_same_active_resource[patient]",
+    "test_cannot_start_two_surgeries_with_same_active_resource[staff]",
+    "test_rejects_blank_descriptive_fields[/operating-rooms-body0]",
+    "test_rejects_blank_descriptive_fields[/patients-body1]",
+    "test_rejects_blank_descriptive_fields[/medical-staff-body2]"
+  ],
+  "regressions_on_original_HEAD": {
+    "expected_failures": 8,
+    "isolated_copy": true
+  },
+  "pytest_version": "9.0.3",
+  "scanners": {
+    "bandit": {
+      "issues": 0,
+      "command": "bandit -r app scripts -q",
+      "version": "1.9.4"
+    },
+    "pip_audit": {
+      "issues": 0,
+      "command": "pip-audit -r requirements.txt",
+      "version": "2.10.1"
+    },
+    "pip_audit_development_browser": {
+      "issues": 0,
+      "includes_runtime": true,
+      "command": "pip-audit -r requirements-dev.txt -r requirements-browser.txt",
+      "version": "2.10.1",
+      "corrected": [
+        {
+          "package": "pytest",
+          "from": "9.0.2",
+          "to": "9.0.3",
+          "id": "PYSEC-2026-1845",
+          "aliases": [
+            "GHSA-6w46-j5rx-g56g",
+            "CVE-2025-71176"
+          ],
+          "duplicate_catalog_records": 2
+        }
+      ]
+    },
+    "npm_audit": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "includes_development": true
+    },
+    "trivy_api": {
+      "image_id": "sha256:05fedf5da80c338c993d0c47bb7c12be9c28b0b8a29c07efc007f33dc2d99d9a",
+      "vulnerabilities": 0,
+      "secrets": 0,
+      "severity": "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL",
+      "ignore_unfixed": false,
+      "version": "0.76.1",
+      "scope": "Imagen API activada en la instalación original"
+    },
+    "trivy_web": {
+      "image_id": "sha256:829f0cd5f41a3c01c9dd9705804b126644fcb5a9ec46acbb910e031f792704e2",
+      "vulnerabilities": 0,
+      "secrets": 0,
+      "severity": "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL",
+      "ignore_unfixed": false,
+      "version": "0.76.1"
+    },
+    "trivy_db": {
+      "image_id": "sha256:8fd8f01f8eb728f3f49f1c2b959b2f35bfd3148365e78c69c565a2657bf8e982",
+      "vulnerabilities": 0,
+      "secrets": 0,
+      "severity": "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL",
+      "ignore_unfixed": false,
+      "version": "0.76.1"
+    },
+    "publishable_source_secrets": {
+      "secrets": 0
+    }
+  },
+  "browser": {
+    "mobile_login_single_column": true,
+    "login_admin": true,
+    "schedule_query_start_complete": true,
+    "clear_conflict_message": true,
+    "mobile_no_horizontal_overflow": true,
+    "login_viewer": true,
+    "login_coordinator": true,
+    "swagger_server_proxy": true,
+    "page_errors": [],
+    "console_errors": [
+      "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    ]
+  },
+  "clean_install": {
+    "git_metadata_copied": false,
+    "secrets_copied": false,
+    "build_three_images": true,
+    "fresh_migration": true,
+    "backup_restore_verified": true,
+    "runtime_provisioned": true,
+    "healthy_services": true,
+    "seed": true,
+    "alembic_check": true
+  },
+  "persistence": {
+    "restart_same_container_and_named_volume": true,
+    "marker_preserved": true,
+    "original_database_restarted": false,
+    "test_volume_retained": true
+  },
+  "scanned_image_artifact_roundtrip": {
+    "docker_save_load_same_image_ids": true,
+    "image_ids": {
+      "medinet-pab-api:latest": "sha256:11ab5dc7fe70d10101f1461ec0c562a308ec103c58d99a4afad1330b65586b99",
+      "medinet-pab-web:latest": "sha256:829f0cd5f41a3c01c9dd9705804b126644fcb5a9ec46acbb910e031f792704e2",
+      "medinet-pab-db:0.5": "sha256:8fd8f01f8eb728f3f49f1c2b959b2f35bfd3148365e78c69c565a2657bf8e982"
+    },
+    "sha256": "651591c34d3122dc3cfb60a5c4c26125c20d2b8ee63aa934e99f986798e29ddd",
+    "publication_executed": false,
+    "scope": "Ensayo de transferencia durante auditoría previa a la activación; no se publicó ninguna imagen."
+  },
+  "checks": {
+    "actionlint": true,
+    "shellcheck": true,
+    "compose_local": true,
+    "compose_production": true,
+    "nginx_test": true,
+    "docker_three_builds": true,
+    "frontend_build": true
+  },
+  "limitations": [
+    "No se rotó la contraseña administrativa; .env se conservó.",
+    "No se comprobaron ejecuciones de GitHub Actions ni despliegue AWS.",
+    "No se ejecutó un DAST completo.",
+    "Un 409 deliberado aparece como error de recurso HTTP; cero errores JavaScript."
+  ],
+  "pre_activation_preservation": {
+    "original_env_unchanged": true,
+    "original_tables": {
+      "operating_rooms": {
+        "count": 8,
+        "all_columns_unchanged": true
+      },
+      "patients": {
+        "count": 15,
+        "all_columns_unchanged": true
+      },
+      "medical_staff": {
+        "count": 10,
+        "all_columns_unchanged": true
+      },
+      "surgeries": {
+        "count": 13,
+        "all_columns_unchanged": true
+      },
+      "surgery_staff": {
+        "count": 26,
+        "all_columns_unchanged": true
+      },
+      "app_users": {
+        "count": 1,
+        "all_columns_unchanged": true
+      },
+      "alembic_version": {
+        "count": 1,
+        "all_columns_unchanged": true
+      }
+    },
+    "original_roles_changed": false,
+    "runtime_flags_restricted_in_copy": true,
+    "runtime_password_scram_in_copy": true,
+    "copy_logs_without_active_secrets": {
+      "medinet-audit-db": true,
+      "medinet-audit-api": true,
+      "medinet-audit-web": true
+    },
+    "no_runtime_file_created_in_original": true
+  },
+  "runtime_activation": {
+    "date_utc": "2026-10-30T16:11:02.058934+00:00",
+    "user_authorized": true,
+    "fresh_backup": "backups/20261030T160814369837892",
+    "backup_restored_and_verified": true,
+    "original_env_unchanged": true,
+    "runtime_env_mode": "0600",
+    "existing_role_statements_and_passwords_preserved": true,
+    "jwt_secret_preserved": true,
+    "database_container_not_recreated_or_restarted": true,
+    "original_volume_preserved": true,
+    "original_rows_unchanged": true,
+    "table_counts": {
+      "operating_rooms": 8,
+      "patients": 15,
+      "medical_staff": 10,
+      "surgeries": 13,
+      "surgery_staff": 26,
+      "app_users": 1,
+      "alembic_version": 1
+    },
+    "runtime": {
+      "role": "medinet_runtime",
+      "privileged_flags_all_false": true,
+      "no_role_memberships": true,
+      "denied_operations": 8,
+      "write_permissions_verified_without_committed_changes": true,
+      "password_is_scram_sha256": true
+    },
+    "authenticated_http_checks": {
+      "/operating-rooms": {
+        "status": 200,
+        "count": 8
+      },
+      "/patients": {
+        "status": 200,
+        "count": 15
+      },
+      "/medical-staff": {
+        "status": 200,
+        "count": 10
+      },
+      "/surgeries": {
+        "status": 200,
+        "count": 13
+      }
+    },
+    "unauthenticated_rejected": true,
+    "swagger_proxy_and_health": true,
+    "services_healthy": 3,
+    "no_active_secrets_or_token_in_logs": true,
+    "admin_password_rotation_performed": false,
+    "commit_or_push_performed": false,
+    "aws_changes": false,
+    "unknown_login_401_without_modifying_accounts": true
+  },
+  "preservation": {
+    "original_env_unchanged": true,
+    "existing_accounts_and_passwords_preserved": true,
+    "original_rows_unchanged": true,
+    "database_container_not_recreated_or_restarted": true,
+    "original_volume_preserved": true,
+    "new_runtime_role_added": true,
+    "public_create_and_temp_revoked": true,
+    "table_counts": {
+      "operating_rooms": 8,
+      "patients": 15,
+      "medical_staff": 10,
+      "surgeries": 13,
+      "surgery_staff": 26,
+      "app_users": 1,
+      "alembic_version": 1
+    }
+  }
+}

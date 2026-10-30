@@ -1,5 +1,16 @@
 # Seguridad v0.5: resultados locales
 
+> Documento de una revisión anterior. Para el estado de esta entrega, consultar
+> [AUDITORIA_INTEGRAL_V05.md](AUDITORIA_INTEGRAL_V05.md) y
+> [ENTREGA_TECNICA_V05.md](ENTREGA_TECNICA_V05.md). Los resultados históricos no
+> acreditan la aplicación de los cambios nuevos a la instalación original.
+
+
+**Revisión posterior:** los hallazgos de dependencias e imágenes descritos aquí
+fueron corregidos. Consulta [REVISION_FINAL_V05.md](REVISION_FINAL_V05.md) para
+los nuevos escaneos y los pendientes de configuración. Este archivo conserva
+la evidencia inicial.
+
 Fecha: 30 de octubre de 2026. Estos escaneos tienen hallazgos abiertos; el pipeline de seguridad no está aprobado para AWS.
 
 | Control | Resultado |

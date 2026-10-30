@@ -1,0 +1,3310 @@
+{
+  "fecha": "2026-10-30T05:27:46.059374-03:00",
+  "trivy_version": "0.76.1",
+  "sin_ignore_unfixed": true,
+  "sin_exclusiones": true,
+  "imagenes": {
+    "api": {
+      "antes": [
+        {
+          "id": "CVE-2026-102268",
+          "severidad": "CRITICAL",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102268",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102266",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102266",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102267",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102267",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102271",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102271",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102272",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102272",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102273",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102273",
+          "componente": "Python"
+        },
+        {
+          "id": "GHSA-pxh4-856f-4h89",
+          "severidad": "HIGH",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://github.com/advisories/GHSA-pxh4-856f-4h89",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-101917",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-101917",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-101918",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.15.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-101918",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102265",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102265",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102269",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102269",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102270",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102270",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102274",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.14.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102274",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-102275",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "2.15.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102275",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-103001",
+          "severidad": "MEDIUM",
+          "paquete": "PyJWT",
+          "instalada": "2.13.0",
+          "corregida_en": "",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-103001",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2025-8869",
+          "severidad": "MEDIUM",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "25.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-8869",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-13346",
+          "severidad": "MEDIUM",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "26.2.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-13346",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-3219",
+          "severidad": "MEDIUM",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "26.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3219",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-6357",
+          "severidad": "MEDIUM",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "26.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6357",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-8643",
+          "severidad": "MEDIUM",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "26.1.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8643",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-1703",
+          "severidad": "LOW",
+          "paquete": "pip",
+          "instalada": "25.0.1",
+          "corregida_en": "26.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-1703",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-48818",
+          "severidad": "HIGH",
+          "paquete": "starlette",
+          "instalada": "0.50.0",
+          "corregida_en": "1.1.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-48818",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-54283",
+          "severidad": "HIGH",
+          "paquete": "starlette",
+          "instalada": "0.50.0",
+          "corregida_en": "1.3.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-54283",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-48710",
+          "severidad": "MEDIUM",
+          "paquete": "starlette",
+          "instalada": "0.50.0",
+          "corregida_en": "1.0.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-48710",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-48817",
+          "severidad": "MEDIUM",
+          "paquete": "starlette",
+          "instalada": "0.50.0",
+          "corregida_en": "1.1.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-48817",
+          "componente": "Python"
+        },
+        {
+          "id": "CVE-2026-54282",
+          "severidad": "LOW",
+          "paquete": "starlette",
+          "instalada": "0.50.0",
+          "corregida_en": "1.3.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-54282",
+          "componente": "Python"
+        }
+      ],
+      "despues": [],
+      "digest_antes": "sha256:6bbea13347b82516eaba0cd300462d2eea38f4c597f753385502a449635e2f55",
+      "digest_despues": "sha256:ab3e537ddaf81cc4068c84133bc9ac1b9bc7eb4b8556473030cbd6fca23ce425",
+      "gate_exit_code": 0
+    },
+    "web": {
+      "antes": [
+        {
+          "id": "CVE-2026-111497",
+          "severidad": "CRITICAL",
+          "paquete": "brotli-libs",
+          "instalada": "1.2.0-r0",
+          "corregida_en": "1.2.1-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-111497",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-33630",
+          "severidad": "HIGH",
+          "paquete": "c-ares",
+          "instalada": "1.34.6-r0",
+          "corregida_en": "1.34.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-33630",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11352",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11352",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11586",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11586",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-12064",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-12064",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-5773",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-5773",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6276",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6276",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8286",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8286",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8458",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8458",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8925",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8925",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8927",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8927",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92392",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92392",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9547",
+          "severidad": "HIGH",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9547",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14017",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14017",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-10536",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-10536",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11564",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11564",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11856",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11856",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-1965",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-1965",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-19931",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-19931",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3783",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3783",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3784",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3784",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3805",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3805",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-4873",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-4873",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-5545",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-5545",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6253",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6253",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6429",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6429",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7009",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7009",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7168",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7168",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-82208",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-82208",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8924",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8924",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8926",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8926",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8932",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8932",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9079",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9079",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9080",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9080",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92388",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92388",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9545",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9545",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9546",
+          "severidad": "MEDIUM",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9546",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14524",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14524",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14819",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14819",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107928",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107928",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107929",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107929",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-13608",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-13608",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-18924",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-18924",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80229",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80229",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80230",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80230",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80231",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80231",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80255",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80255",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-82209",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-82209",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86409",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86409",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86410",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86410",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86411",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86411",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86412",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86412",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86413",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86413",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86414",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86414",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86415",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86415",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87861",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87861",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87862",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87862",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87863",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87863",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87864",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87864",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87865",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87865",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87866",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87866",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92386",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92386",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92387",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92387",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92389",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92389",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92390",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92390",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92391",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92391",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-94265",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94265",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-94266",
+          "severidad": "LOW",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94266",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80256",
+          "severidad": "UNKNOWN",
+          "paquete": "curl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80256",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-14456",
+          "severidad": "HIGH",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-14456",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45447",
+          "severidad": "HIGH",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45447",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-18798",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-18798",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34182",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34182",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34183",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34183",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42764",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42764",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45445",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45445",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63072",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63072",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63076",
+          "severidad": "MEDIUM",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63076",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-14457",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-14457",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34180",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34180",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34181",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34181",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42766",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42766",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42767",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42767",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42768",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42768",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42769",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42769",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42770",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42770",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45446",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45446",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-54874",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-54874",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63073",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63073",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63074",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63074",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63075",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63075",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7383",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7383",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-75803",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-75803",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9076",
+          "severidad": "LOW",
+          "paquete": "libcrypto3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9076",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11352",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11352",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11586",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11586",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-12064",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-12064",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-5773",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-5773",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6276",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6276",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8286",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8286",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8458",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8458",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8925",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8925",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8927",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8927",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92392",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92392",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9547",
+          "severidad": "HIGH",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9547",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14017",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14017",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-10536",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-10536",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11564",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11564",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-11856",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-11856",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-1965",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-1965",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-19931",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-19931",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3783",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3783",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3784",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3784",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-3805",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.19.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-3805",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-4873",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-4873",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-5545",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-5545",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6253",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6253",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6429",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6429",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7009",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7009",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7168",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.20.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7168",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-82208",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-82208",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8924",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8924",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8926",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8926",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-8932",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-8932",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9079",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9079",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9080",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9080",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92388",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92388",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9545",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9545",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9546",
+          "severidad": "MEDIUM",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9546",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14524",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14524",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2025-14819",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.18.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-14819",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107928",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107928",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107929",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107929",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-13608",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-13608",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-18924",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-18924",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80229",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80229",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80230",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80230",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80231",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80231",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80255",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80255",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-82209",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-82209",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86409",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86409",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86410",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86410",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86411",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86411",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86412",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86412",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86413",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86413",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86414",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86414",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86415",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86415",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87861",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87861",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87862",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87862",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87863",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87863",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87864",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87864",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87865",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87865",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-87866",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-87866",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92386",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92386",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92387",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92387",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92389",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92389",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92390",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92390",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-92391",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-92391",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-94265",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94265",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-94266",
+          "severidad": "LOW",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.23.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94266",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-80256",
+          "severidad": "UNKNOWN",
+          "paquete": "libcurl",
+          "instalada": "8.17.0-r1",
+          "corregida_en": "8.22.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-80256",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45186",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.1-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45186",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-66046",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.4-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-66046",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-76641",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.4-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-76641",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-76956",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.4-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-76956",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-76957",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.4-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-76957",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-77214",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.9.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-77214",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-93990",
+          "severidad": "HIGH",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.5-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-93990",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-102633",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.9.0-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-102633",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-50219",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-50219",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56131",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56131",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56132",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56132",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56403",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56403",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56404",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56404",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56405",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56405",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56406",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56406",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56407",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56407",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56408",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56408",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56409",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56409",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56410",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56410",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56411",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56411",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-56412",
+          "severidad": "MEDIUM",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56412",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-41080",
+          "severidad": "LOW",
+          "paquete": "libexpat",
+          "instalada": "2.7.5-r0",
+          "corregida_en": "2.8.1-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-41080",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-40930",
+          "severidad": "MEDIUM",
+          "paquete": "libpng",
+          "instalada": "1.6.57-r0",
+          "corregida_en": "1.6.58-r1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-40930",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-46675",
+          "severidad": "MEDIUM",
+          "paquete": "libpng",
+          "instalada": "1.6.57-r0",
+          "corregida_en": "1.6.59-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-46675",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-14456",
+          "severidad": "HIGH",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-14456",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45447",
+          "severidad": "HIGH",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45447",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-18798",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-18798",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34182",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34182",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34183",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34183",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42764",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42764",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45445",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45445",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63072",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63072",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63076",
+          "severidad": "MEDIUM",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63076",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-14457",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-14457",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34180",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34180",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-34181",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-34181",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42766",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42766",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42767",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42767",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42768",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42768",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42769",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42769",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-42770",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42770",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-45446",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-45446",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-54874",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-54874",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63073",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63073",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63074",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63074",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-63075",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-63075",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-7383",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-7383",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-75803",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.8-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-75803",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-9076",
+          "severidad": "LOW",
+          "paquete": "libssl3",
+          "instalada": "3.5.6-r0",
+          "corregida_en": "3.5.7-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-9076",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-53612",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-53612",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-53613",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-53613",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-53614",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-53614",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-76642",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-76642",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-78408",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78408",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-78410",
+          "severidad": "HIGH",
+          "paquete": "libuuid",
+          "instalada": "2.41.4-r0",
+          "corregida_en": "2.41.6-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78410",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-6732",
+          "severidad": "HIGH",
+          "paquete": "libxml2",
+          "instalada": "2.13.9-r0",
+          "corregida_en": "2.13.9-r1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-6732",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107891",
+          "severidad": "UNKNOWN",
+          "paquete": "musl",
+          "instalada": "1.2.5-r23",
+          "corregida_en": "1.2.5-r24",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107891",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-107891",
+          "severidad": "UNKNOWN",
+          "paquete": "musl-utils",
+          "instalada": "1.2.5-r23",
+          "corregida_en": "1.2.5-r24",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-107891",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-103111",
+          "severidad": "HIGH",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.49-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-103111",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-86145",
+          "severidad": "HIGH",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-86145",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89157",
+          "severidad": "HIGH",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89157",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89161",
+          "severidad": "HIGH",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89161",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89156",
+          "severidad": "MEDIUM",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89156",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89158",
+          "severidad": "MEDIUM",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89158",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89160",
+          "severidad": "MEDIUM",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89160",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-89162",
+          "severidad": "LOW",
+          "paquete": "pcre2",
+          "instalada": "10.47-r0",
+          "corregida_en": "10.48-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-89162",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-4775",
+          "severidad": "HIGH",
+          "paquete": "tiff",
+          "instalada": "4.7.1-r0",
+          "corregida_en": "4.7.2-r0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-4775",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        },
+        {
+          "id": "CVE-2026-85091",
+          "severidad": "MEDIUM",
+          "paquete": "zlib",
+          "instalada": "1.3.2-r0",
+          "corregida_en": "1.3.2-r1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-85091",
+          "componente": "medinet-pab-web (alpine 3.23.4)"
+        }
+      ],
+      "despues": [],
+      "digest_antes": "sha256:ff5b85e2a0d79b11f7a573246aa01f2fbfb5061ee30e748cf756cc9b8caf135a",
+      "digest_despues": "sha256:c6c92c98944c28e395f20c000480979a836559a84c3c587bad318137db95a12d",
+      "gate_exit_code": 0
+    },
+    "db": {
+      "antes": [
+        {
+          "id": "CVE-2026-61801",
+          "severidad": "MEDIUM",
+          "paquete": "github.com/moby/sys/user",
+          "instalada": "v0.1.0",
+          "corregida_en": "0.4.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-61801",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39824",
+          "severidad": "UNKNOWN",
+          "paquete": "golang.org/x/sys",
+          "instalada": "v0.1.0",
+          "corregida_en": "0.44.0",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39824",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-68121",
+          "severidad": "CRITICAL",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.13, 1.25.7, 1.26.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-68121",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61726",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.12, 1.25.6",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61726",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61729",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.11, 1.25.5",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61729",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-111943",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.10, 1.27.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-111943",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-25679",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.8, 1.26.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-25679",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-27145",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.11, 1.26.4",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-27145",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32280",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32280",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32281",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32281",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32283",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32283",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-33811",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-33811",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-33814",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-33814",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-33818",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-33818",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39820",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39820",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39821",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39821",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39822",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.12, 1.26.5, 1.27.0-rc.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39822",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39836",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39836",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-42499",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42499",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-42504",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.11, 1.26.4",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42504",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56853",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56853",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56858",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56858",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56859",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56859",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56860",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56860",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56862",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.13, 1.26.6, 1.27.0-rc.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56862",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-78667",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78667",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-78669",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78669",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-97031",
+          "severidad": "HIGH",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-97031",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-47912",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-47912",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58183",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58183",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58185",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58185",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58187",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.9, 1.25.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58187",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58188",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58188",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58189",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58189",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61723",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61723",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61724",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61724",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61725",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61725",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61727",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.11, 1.25.5",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61727",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61728",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.12, 1.25.6",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61728",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-61730",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.12, 1.25.6",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-61730",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-27142",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.8, 1.26.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-27142",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32282",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32282",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32288",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32288",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-32289",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.9, 1.26.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-32289",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39823",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39823",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39825",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39825",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-39826",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.10, 1.26.3",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-39826",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-42505",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.12, 1.26.5, 1.27.0-rc.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42505",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-42507",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.11, 1.26.4",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-42507",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56866",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56866",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-78659",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78659",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-78660",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78660",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-78663",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-78663",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-94439",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94439",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-94440",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94440",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-94448",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-94448",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-97030",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-97030",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-97032",
+          "severidad": "MEDIUM",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-97032",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2025-58186",
+          "severidad": "LOW",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.24.8, 1.25.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2025-58186",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-27139",
+          "severidad": "LOW",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.25.8, 1.26.1",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-27139",
+          "componente": "usr/local/bin/gosu"
+        },
+        {
+          "id": "CVE-2026-56857",
+          "severidad": "LOW",
+          "paquete": "stdlib",
+          "instalada": "v1.24.6",
+          "corregida_en": "1.26.9, 1.27.2",
+          "fuente": "https://avd.aquasec.com/nvd/cve-2026-56857",
+          "componente": "usr/local/bin/gosu"
+        }
+      ],
+      "despues": [],
+      "digest_antes": "sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+      "digest_despues": "sha256:37b440f9c1d63d966021146f86e5ccc99ab3a64204ca6befc524b1573a3a0ac8",
+      "gate_exit_code": 0
+    }
+  },
+  "pip_antes": [
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4145",
+      "aliases": [
+        "CVE-2026-102268",
+        "GHSA-ffc3-869f-jxw9"
+      ],
+      "severidad": "CRITICAL",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4145"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4146",
+      "aliases": [
+        "CVE-2026-103001",
+        "GHSA-gvp8-978c-rx2q"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4146"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4149",
+      "aliases": [
+        "GHSA-p4g4-x82p-q773",
+        "CVE-2026-102271"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4149"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4152",
+      "aliases": [
+        "GHSA-w6j9-cwv2-h6wq",
+        "CVE-2026-102274"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4152"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4144",
+      "aliases": [
+        "CVE-2026-102267",
+        "GHSA-9v7f-9g4p-ffgj"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4144"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4143",
+      "aliases": [
+        "CVE-2026-102266",
+        "GHSA-9j54-fg26-wv3r"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4143"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4148",
+      "aliases": [
+        "CVE-2026-102270",
+        "GHSA-jwrc-g2q2-pq5p"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4148"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4140",
+      "aliases": [
+        "GHSA-2gx3-rcp4-g85q",
+        "CVE-2026-101917"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4140"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4141",
+      "aliases": [
+        "GHSA-42vr-xj54-vc7v",
+        "CVE-2026-101918"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.15.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4141"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4147",
+      "aliases": [
+        "CVE-2026-102269",
+        "GHSA-hxm8-2xgr-2p9m"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4147"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4151",
+      "aliases": [
+        "GHSA-w2cx-738m-mc7w",
+        "CVE-2026-102273"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4151"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4150",
+      "aliases": [
+        "CVE-2026-102272",
+        "GHSA-r6x4-923q-g947"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4150"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4142",
+      "aliases": [
+        "CVE-2026-102265",
+        "GHSA-8wjv-2p76-3863"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4142"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4183",
+      "aliases": [
+        "CVE-2026-102275",
+        "GHSA-x33g-cr3x-6449"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "2.15.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-4183"
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "GHSA-pxh4-856f-4h89",
+      "aliases": [],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "2.14.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/GHSA-pxh4-856f-4h89"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1795",
+      "aliases": [
+        "GHSA-4xh5-x5gv-qwph",
+        "CVE-2025-8869"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "25.3"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-4xh5-x5gv-qwph"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1796",
+      "aliases": [
+        "GHSA-6vgw-5pg2-w6jp",
+        "CVE-2026-1703"
+      ],
+      "severidad": "LOW",
+      "correcciones_catalogo": [
+        "26.0"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-6vgw-5pg2-w6jp"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2875",
+      "aliases": [
+        "CVE-2026-3219",
+        "GHSA-58qw-9mgm-455v"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "26.1"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-58qw-9mgm-455v"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2876",
+      "aliases": [
+        "GHSA-jp4c-xjxw-mgf9",
+        "CVE-2026-6357"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "26.1"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-jp4c-xjxw-mgf9"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-196",
+      "aliases": [
+        "CVE-2026-8643",
+        "GHSA-wf93-45jw-7689"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "26.1.2"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-wf93-45jw-7689"
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-3721",
+      "aliases": [
+        "CVE-2026-13346",
+        "GHSA-qwm4-qh6w-59xr"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "26.2"
+      ],
+      "fuente": "https://github.com/advisories/GHSA-qwm4-qh6w-59xr"
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-161",
+      "aliases": [
+        "CVE-2026-48710",
+        "GHSA-86qp-5c8j-p5mr",
+        "X41-2026-002"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "1.0.1"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-161"
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2281",
+      "aliases": [
+        "GHSA-wqp7-x3pw-xc5r",
+        "CVE-2026-48818"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "1.1.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-2281"
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2280",
+      "aliases": [
+        "GHSA-x746-7m8f-x49c",
+        "CVE-2026-48817"
+      ],
+      "severidad": "MEDIUM",
+      "correcciones_catalogo": [
+        "1.1.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-2280"
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-249",
+      "aliases": [
+        "GHSA-82w8-qh3p-5jfq",
+        "CVE-2026-54283"
+      ],
+      "severidad": "HIGH",
+      "correcciones_catalogo": [
+        "1.3.1"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-249"
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-248",
+      "aliases": [
+        "GHSA-jp82-jpqv-5vv3",
+        "CVE-2026-54282"
+      ],
+      "severidad": "LOW",
+      "correcciones_catalogo": [
+        "1.3.0"
+      ],
+      "fuente": "https://osv.dev/vulnerability/PYSEC-2026-248"
+    }
+  ],
+  "pip_despues": {
+    "fuentes": {
+      "hallazgos": 0,
+      "dependencias": 26,
+      "exit_code": 0
+    },
+    "imagen": {
+      "hallazgos": 0,
+      "dependencias": 26,
+      "exit_code": 0
+    },
+    "comando_ci": {
+      "hallazgos": 0,
+      "dependencias": 26,
+      "exit_code": 0
+    }
+  },
+  "npm_despues": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "bandit_despues": [],
+  "referencias_actions": {
+    "actions/checkout": {
+      "tag": "v7",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+    },
+    "actions/setup-python": {
+      "tag": "v7",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
+    },
+    "actions/setup-node": {
+      "tag": "v7",
+      "sha": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+    },
+    "docker/setup-buildx-action": {
+      "tag": "v3",
+      "sha": "8d2750c68a42422c14e847fe6c8ac0403b4cbd6f"
+    },
+    "docker/login-action": {
+      "tag": "v3",
+      "sha": "c94ce9fb468520275223c153574b00df6fe4bcc9"
+    },
+    "docker/build-push-action": {
+      "tag": "v7",
+      "sha": "c3c9e263c25d99ce0380d002d59b67737d91b0dc"
+    },
+    "aquasecurity/trivy-action": {
+      "tag": "v0.36.0",
+      "sha": "ed142fd0673e97e23eac54620cfb913e5ce36c25"
+    }
+  },
+  "correcciones_intermedias_gosu": [
+    {
+      "id": "CVE-2026-61801",
+      "severidad": "MEDIUM",
+      "paquete": "github.com/moby/sys/user",
+      "antes": "v0.1.0",
+      "despues": "v0.4.1"
+    },
+    {
+      "id": "CVE-2026-39824",
+      "severidad": "UNKNOWN",
+      "paquete": "golang.org/x/sys",
+      "antes": "v0.1.0",
+      "despues": "v0.44.0"
+    }
+  ]
+}

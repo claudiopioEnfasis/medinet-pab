@@ -20,6 +20,9 @@
 .session-user{font-size:.75rem;color:#607787;white-space:nowrap;font-weight:700}
 @media(max-width:830px){.auth-shell{grid-template-columns:1fr}.auth-info{min-height:235px;padding:28px}.auth-info h1{font-size:1.9rem;max-width:none}.auth-info p{font-size:.84rem;margin-top:10px}.auth-eyebrow{margin-bottom:12px}.auth-foot{display:none}.auth-panel{padding:27px 16px 50px}.auth-card{max-width:500px}}
 @media(max-width:600px){.session-user{display:none}}
+/* Mantener conexión, recarga y salida dentro del ancho móvil. */
+@media(max-width:650px){.topbar-right{gap:8px}}
+@media(max-width:450px){.topbar .avatar{display:none}.mobile-brand{font-size:.9rem}}
 
 
 /* MediNet v0.5 — identidad visual renovada. Sin librerías de UI externas. */
@@ -110,3 +113,5 @@ h1,h2 {letter-spacing:-.045em;}
 @media(max-width:850px){.hero-command{padding:31px;min-height:220px}.hero-signal{right:-60px;opacity:.17}.main{padding-top:24px}.auth-graphic{display:none}.auth-info{min-height:260px}.auth-info:before{display:none}}
 @media(max-width:650px){.hero-command{min-height:0;padding:27px 22px;border-radius:16px}.hero-command h1{font-size:2rem}.hero-command p{font-size:.83rem}.hero-signal{display:none}.hero-buttons{margin-top:18px}.hero-buttons .button{width:100%}.ops-pulse{padding:20px 18px}.pulse-head{align-items:flex-start}.pulse-today{flex-direction:column;gap:2px;padding:4px 0 4px 9px}.pulse-today strong{font-size:1.65rem}.capacity-legend{gap:10px 15px}.stat-card{min-height:138px;padding:15px}.auth-info{min-height:245px}.auth-info h1{font-size:1.9rem}}
 @media(prefers-reduced-motion:reduce){.button,.room-card,.capacity-segment{transition:none!important;animation:none!important}}
+/* La identidad v0.5 define dos columnas después del breakpoint original. */
+@media(max-width:850px){.auth-shell{grid-template-columns:minmax(0,1fr)}}

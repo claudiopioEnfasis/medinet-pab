@@ -1,0 +1,51 @@
+{
+  "version_aplicacion": "0.5.0",
+  "pytest": [
+    "47 passed, 1 warning in 13.21s"
+  ],
+  "datos_originales": {
+    "app_users": 1,
+    "medical_staff": 10,
+    "operating_rooms": 8,
+    "patients": 15,
+    "surgeries": 13,
+    "surgery_staff": 26
+  },
+  "datos_completos_preservados": true,
+  "respaldo_restaurado": true,
+  "revision_alembic": "0001 (head)",
+  "esquema_sin_diferencias": true,
+  "navegador_copia_restaurada": [
+    "Login real con administrador de pruebas en PostgreSQL restaurado (200)",
+    "Dashboard desplegado muestra PAB-01 a PAB-08 y los cuatro estados",
+    "Programación desde React con paciente/equipo ficticios y disponibilidad positiva (201)",
+    "Conflicto de horario rechazado por API real (409)",
+    "Conflictos individuales de pabellón, paciente y equipo rechazados (409)",
+    "Entradas sin zona horaria rechazadas (422) y recurso privado sin sesión (401)",
+    "Consulta en agenda, inicio y finalización de la cirugía desde React",
+    "Cambio de estado del pabellón, ocho tarjetas finales y cero errores JavaScript",
+    "Swagger renderizado y operaciones OpenAPI visibles"
+  ],
+  "viewer_pg_403": true,
+  "produccion_solo_lectura": true,
+  "configuracion_residual": {
+    "postgres_role": {
+      "superuser": true,
+      "create_role": true,
+      "create_db": true
+    },
+    "postgres_password_needs_strength_review": true
+  },
+  "github_actions": {
+    "repo": "claudiopioEnfasis/medinet-pab",
+    "plugin": "404",
+    "runs": [],
+    "status": "unavailable",
+    "error_type": "HTTPError",
+    "http_status": 404
+  },
+  "env_sin_cambios": true,
+  "git_head_sin_cambios": true,
+  "temporales_retirados": true,
+  "historial_local_revisado_blobs": 56
+}

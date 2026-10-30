@@ -3,7 +3,7 @@
 name: medinet-pab
 services:
   db:
-    image: postgres:17-alpine
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-db:${IMAGE_TAG:?Define IMAGE_TAG}
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}
@@ -19,6 +19,9 @@ services:
       retries: 15
   api:
     image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-api:${IMAGE_TAG:?Define IMAGE_TAG}
+    env_file:
+      - path: .env.runtime
+        required: false
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
@@ -28,15 +31,27 @@ services:
       start_period: 20s
     environment:
       DB_HOST: db
-      POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configura .env en el servidor}
-      POSTGRES_DB: ${POSTGRES_DB:?Configura .env en el servidor}
+      API_ROOT_PATH: /api
       JWT_SECRET: ${JWT_SECRET:?Configura .env en el servidor}
     security_opt: ["no-new-privileges:true"]
     cap_drop: [ALL]
     depends_on:
       db: {condition: service_healthy}
     networks: [private_db, front]
+  maintenance:
+    profiles: [maintenance]
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-api:${IMAGE_TAG:?Define IMAGE_TAG}
+    environment:
+      DB_HOST: db
+      POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configura .env en el servidor}
+      POSTGRES_DB: ${POSTGRES_DB:?Configura .env en el servidor}
+    command: [python, -m, scripts.migrate]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    depends_on:
+      db: {condition: service_healthy}
+    networks: [private_db]
   web:
     image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-web:${IMAGE_TAG:?Define IMAGE_TAG}
     restart: unless-stopped

@@ -29,7 +29,7 @@ def _database_url():
     )
 
 
-engine = create_engine(_database_url(), pool_pre_ping=True)
+engine = create_engine(_database_url(), pool_pre_ping=True, hide_parameters=True)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 

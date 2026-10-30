@@ -1,175 +1,115 @@
 # MediNet-Core · PAB — v0.5
 
-**Evaluación 02 de Desarrollo Seguro — Módulo 6: Pabellones y Quirófanos.**
+Evaluación 2 de Desarrollo Seguro. Módulo 6: Pabellones y Quirófanos.
+Solo datos ficticios. React/Vite + Nginx, FastAPI/JWT/Argon2id, PostgreSQL 17.11
+con SQLAlchemy y Alembic. Tres servicios persistentes; el servicio con perfil
+`maintenance` se ejecuta únicamente para tareas administrativas puntuales.
 
-Proyecto académico con **datos únicamente ficticios**. Esta versión combina la etapa 0.4 (backend reforzado) y 0.5 (CI/CD). La próxima y última versión será la **v1.0**, que incluirá despliegue AWS Academy Learner Lab e informe ISO 27034.
+La [entrega técnica para Matías](docs/ENTREGA_TECNICA_V05.md) describe la
+arquitectura, operación, AWS Academy e informe académico. La
+[auditoría integral](docs/AUDITORIA_INTEGRAL_V05.md) distingue resultados actuales,
+evidencia histórica y pendientes. HTTPS y la ejecución real de Actions/EC2
+siguen pendientes: esta versión permanece local y no admite datos clínicos reales.
 
-## Diseño e infraestructura
+## Instalación nueva desde GitHub
 
-- `web`: React + Vite compilado; Nginx sin root. Panel renovado de control de pabellones, calendario, estados y programación; las cifras provienen de la API, no son métricas inventadas.
-- `api`: FastAPI + Swagger /docs, JWT, Argon2id, permisos (admin, coordinator, viewer), validación de horarios y bloqueos PostgreSQL por recurso.
-- `db`: PostgreSQL 17-alpine, red interna y volumen persistente.
-- `migrations`: revisiones Alembic. Reconoce v0.3 e inicializa el control de versión sin borrar datos si el esquema es compatible.
-- `.github/workflows/ci-cd.yml`: jobs de pruebas SQLite + PostgreSQL (incluye dos reservas concurrentes), compilación React, Bandit, pip-audit, Trivy y publicación de imágenes SHA en GHCR. Despliegue hacia EC2 preparado pero **desactivado hasta v1.0**.
-
-> **No está listo para exposición pública ni para datos reales.** Faltan HTTPS y pruebas operativas en EC2, integración con otros módulos y evidencia del pipeline en GitHub. Nunca conectar pacientes reales a esta demostración.
-
-## 1. Actualizar desde v0.3 en Linux Mint (sin perder los datos)
-
-### Primero, respaldo
-
-Abre la terminal en VS Code dentro de tu proyecto **que funciona**:
+Requisitos: Git, Docker Engine/Compose v2 reciente con `env_file.required`, Bash,
+Python 3 y OpenSSL en el host. El frontend y backend se compilan dentro de Docker.
+Usar Linux/AMD64, o validar expresamente otra arquitectura.
 
 ```bash
-cd ~/Escritorio/medinet-pab
-# Respaldar PostgreSQL en carpeta privada del usuario; no subir a GitHub.
-mkdir -p "$HOME/respaldos-medinet"
-chmod 700 "$HOME/respaldos-medinet"
-docker compose exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB"' > "$HOME/respaldos-medinet/pab-antes-v05.sql"
-# Respaldar archivos para poder volver a v0.3 si fuese necesario.
-cd ~/Escritorio
-cp -a medinet-pab medinet-pab-respaldo-v03
-```
-
-Guarda el ZIP descargado `medinet-pab-v0.5.zip` en `~/Descargas` y verifica que exista:
-
-```bash
-ls -lh ~/Descargas/medinet-pab-v0.5.zip
-```
-
-### Actualizar código y volver a iniciar
-
-```bash
-cd ~/Escritorio
-unzip -o ~/Descargas/medinet-pab-v0.5.zip
+git clone https://github.com/claudiopioEnfasis/medinet-pab.git
 cd medinet-pab
-# Tu .env no se incluye en el ZIP ni debería reemplazarse.
-docker compose config --quiet
-docker compose up --build -d
-docker compose ps
-```
-
-**No uses `docker compose down -v`, `docker volume rm`, ni elimines la carpeta actual.** La base de datos de Docker se mantiene si conservas el nombre del proyecto (`medinet-pab`) y el volumen `postgres_data`.
-
-Si el API no inicia, consulta la migración:
-
-```bash
-docker compose logs --tail=100 api
-```
-
-No borres la base: si detecta un esquema v0.3 incompatible, la migración se detiene para que lo revisemos antes de tocar registros.
-
-### Si falla la configuración de `.env`
-
-Compose necesita un `.env` en la raíz del proyecto, o uno indicado mediante
-`docker compose --env-file /ruta/privada/.env config --quiet`. La plantilla
-`.env.example` no se carga automáticamente y deja los secretos vacíos a propósito.
-
-| Variable | Uso local | Producción | Al actualizar desde v0.3 |
-|---|---|---|---|
-| `POSTGRES_USER` | Obligatoria | Obligatoria | Conservar el usuario existente |
-| `POSTGRES_DB` | Obligatoria | Obligatoria | Conservar la base existente |
-| `POSTGRES_PASSWORD` | Obligatoria | Obligatoria | Conservar la contraseña existente |
-| `JWT_SECRET` | Obligatoria, mínimo 32 caracteres | Obligatoria, mínimo 32 caracteres | Conservar la clave; generar solo si falta |
-| `IMAGE_PREFIX`, `IMAGE_TAG` | No se usan | Obligatorias | Identifican las imágenes publicadas por CI |
-| `DB_HOST` | Compose fija `db` | Compose fija `db` | No requiere una entrada en `.env` |
-
-Si actualizas una instalación, recupera el `.env` anterior desde tu respaldo.
-**No lo reemplaces con `.env.example` ni generes otra contraseña de PostgreSQL**:
-las variables `POSTGRES_*` inicializan un volumen vacío y no cambian las
-credenciales almacenadas en un volumen existente. Conserva también el nombre
-del proyecto y del volumen. Si has perdido el archivo pero los contenedores
-siguen funcionando, sus variables permiten recuperarlo localmente; no compartas
-la salida de `docker inspect` ni de `docker compose config` sin `--quiet`.
-
-Solo para una instalación nueva, crea la plantilla sin sobrescribir archivos:
-
-```bash
+# Solo si NO hay .env: crea archivo privado y nunca lo sobrescribe.
 (umask 077; set -C; cat .env.example > .env)
 ```
 
-Completa los valores en tu editor local. Para secretos con `$` o `#`, usa comillas
-simples para conservar el valor literal. Protege el archivo con `chmod 600 .env`.
-Las variables exportadas en la terminal prevalecen sobre `.env`; evita valores
-antiguos en la sesión al validar o iniciar servicios.
+Completar `.env` en el editor con un usuario administrador nuevo, nombre de base,
+contraseña PostgreSQL aleatoria y JWT_SECRET aleatorio. Generar ambos secretos
+por separado con `openssl rand -hex 32`; no copiarlos a capturas ni al informe.
+La plantilla contiene secretos vacíos. Conservar `.env` existente al actualizar.
 
 ```bash
+chmod 600 .env
 docker compose config --quiet
-# Solo con IMAGE_PREFIX e IMAGE_TAG configuradas; archivo independiente:
-docker compose -f compose.prod.yaml config --quiet
+docker compose build
+docker compose up -d --wait db
+# Alembic usa administración, fuera del proceso de la API.
+docker compose --profile maintenance run --rm maintenance
+# Respaldo verificable ANTES de crear el rol y cambiar privilegios.
+bash scripts/backup.sh --verify
+# Crea medinet_runtime y .env.runtime (0600), sin sobrescribir .env.
+bash scripts/provision_runtime.sh
+docker compose up -d --wait
+docker compose ps
+# Crea usuario de aplicación; solicita la contraseña sin mostrarla.
+docker compose --profile maintenance run --rm maintenance python -m scripts.create_user admin admin
+# Opcional, solo datos de demostración; transaccional e idempotente.
+docker compose exec -T api python -m scripts.seed_demo
 ```
 
-Esta validación comprueba la configuración, pero no verifica la contraseña
-contra PostgreSQL ni la longitud de `JWT_SECRET`; la API exige esta última al
-iniciar. Para comprobar servicios ya activos sin reiniciarlos, usa
-`docker compose ps` y `curl --fail http://localhost:3000/api/health/ready`.
+La API usa exclusivamente la conexión restringida de `.env.runtime` y la clave
+JWT de `.env`. El administrador de BD queda en `db` y en los contenedores
+transitorios de mantenimiento. El rol runtime no puede ejecutar Alembic,
+crear usuarios, cambiar roles ni eliminar registros. Nunca ejecutar
+`create_user` dentro de `api` después de la separación.
 
-## 2. Abrir el proyecto
+El seed nuevo genera ocho pabellones, quince pacientes, diez profesionales y
+hasta doce cirugías. La instalación anterior contiene trece cirugías; la
+adicional se conserva. Repetir el seed no renueva fechas ni reemplaza registros.
 
-- Panel: **http://localhost:3000**
-- Swagger (local): **http://localhost:8000/docs** o **http://localhost:3000/docs**.
-- Health de servicios: **http://localhost:3000/api/health/ready**.
+## Actualizar esta instalación existente
 
-**Conserva tu usuario `admin` y su contraseña de v0.3**. Si no existe, créalo únicamente una vez:
+No clonar encima del repositorio actual, no reinicializar Git, no reemplazar
+`.env`, no cambiar contraseñas de un volumen inicializado mediante variables,
+no eliminar datos ni volúmenes. **No ejecutar `docker compose down -v`.**
+
+La separación ya se aplicó a esta instalación local con autorización y respaldo
+verificado; `.env.runtime` debe conservarse. Los tres servicios están saludables.
+La contraseña administrativa anterior permanece pendiente de rotación coordinada.
+
+Antes de aplicar la separación de roles a **otra** instalación existente, revisar y
+autorizar el [plan PostgreSQL](docs/PLAN_POSTGRES_V05.md). Generar un nuevo respaldo
+con `bash scripts/backup.sh --verify`. Construir las imágenes y ejecutar Alembic
+con `maintenance`; ejecutar `provision_runtime.sh` una sola vez si todavía no
+existen el rol ni el archivo runtime. Solo entonces recrear la API. Hasta completar
+ese paso, no usar la nueva composición para reiniciar el backend anterior.
+
+Si `.env.runtime` ya existe, conservarlo. Después de cada migración:
 
 ```bash
-docker compose exec -it api python -m scripts.create_user admin admin
+docker compose --profile maintenance run --rm maintenance
+docker compose --profile maintenance run --rm maintenance python -m scripts.db_privileges
+docker compose up -d --wait
 ```
 
-Si necesitas datos ficticios:
+Los grants son explícitos: una tabla nueva requiere revisar
+[scripts/db_privileges.py](scripts/db_privileges.py). El usuario administrador y
+las contraseñas de aplicación anteriores se conservan. La rotación de la
+contraseña administrativa debe coordinar `ALTER ROLE` con actualización del
+archivo privado, después de verificar respaldo y acceso alternativo.
+
+## Acceso y verificación
+
+- Panel: http://localhost:3000
+- Swagger: http://localhost:3000/docs (Try it out usa `/api`).
+- API directa local: http://localhost:8000/docs
+- Readiness: http://localhost:3000/api/health/ready
 
 ```bash
-docker compose exec api python -m scripts.seed_demo
+curl --fail http://localhost:3000/api/health/ready
+docker compose exec -T web nginx -t
+docker compose --profile maintenance run --rm maintenance python -m alembic current
+docker compose --profile maintenance run --rm maintenance python -m alembic check
 ```
 
-La carga requiere PostgreSQL real. Agrega PAB-01 a PAB-08, 15 pacientes y
-10 profesionales claramente ficticios, y hasta 12 cirugías de demostración
-(10 programadas y dos en curso). En una base vacía deja cuatro salas disponibles,
-dos ocupadas, una en sanitización y una en mantención. Las programadas se sitúan
-el día siguiente a la primera carga, según `America/Santiago`.
+Roles de la aplicación: `admin` administra catálogos y cirugías; `coordinator`
+programa y cambia estados; `viewer` consulta. Sesión JWT de treinta minutos en
+memoria del navegador. No se guarda en localStorage ni sessionStorage.
 
-Antes de cargar en una base persistente, realiza el respaldo de la sección 1.
-El script conserva los códigos/referencias existentes, sus valores y todos los
-usuarios. Se puede repetir: reconoce las cirugías por su marcador `DEMO-V05` y
-no duplica ni actualiza registros, incluso si sus estados cambiaron. Los
-horarios existentes no se desplazan; la carga comprueba sala, paciente y equipo
-médico, busca otro intervalo o informa que omitió un ejemplo. La operación
-completa usa una transacción y los mismos bloqueos de recursos que la API.
+## Pruebas y seguridad
 
-La segunda ejecución no renueva fechas antiguas. Para una nueva presentación
-puedes programar cirugías adicionales desde el panel. Consulta
-[la verificación de datos e interfaz](docs/DEMO_V05_VERIFICACION.md) para los
-conteos cargados, evidencias y pendientes de seguridad antes de AWS.
-
-## 3. Trabajar con GitHub desde VS Code
-
-Abre la carpeta `medinet-pab` en VS Code. Revisa el panel de **Control de código fuente** y comprueba que el `.env` no figure entre los cambios:
-
-```bash
-git check-ignore -v .env
-git ls-files .env
-```
-
-El segundo comando no debe devolver nada. Luego confirma el commit desde VS Code con el mensaje **`MediNet PAB v0.5 - CI/CD y seguridad`** y presiona **Sync Changes** para publicarlo en el mismo repositorio privado. No inicialices otro repositorio.
-
-En **GitHub → repositorio → Actions**, revisa el workflow **MediNet PAB - Calidad, seguridad y entrega**. Los primeros jobs pueden requerir descarga de dependencias o exponer hallazgos del escaneo que deban corregirse; no se consideran aprobados hasta que se ejecuten allí correctamente.
-
-## 4. Qué ejecuta el pipeline
-
-| Job | Qué demuestra |
-|---|---|
-| `backend-and-postgres` | Pruebas Python, acceso y bloqueo, PostgreSQL real, reserva simultánea, migraciones |
-| `frontend` | Instalación npm, compilación React, análisis dependencias de producción |
-| `sast-sca` | Bandit código Python, pip-audit dependencias |
-| `image-scan` | Builds Docker backend/web y Trivy HIGH/CRITICAL |
-| `publish` | Solo `push` a `main`: imágenes GHCR con etiqueta `sha-<commit>` |
-| `deploy-ec2` | Preparado, **no activo** hasta configurar EC2 y la variable `ENABLE_EC2_DEPLOY=true` |
-
-La publicación de imágenes es independiente de la configuración AWS Academy. Para habilitar despliegue debemos primero crear EC2, TLS, el directorio protegido `/opt/medinet-pab`, un runner confiable con etiqueta `medinet-ec2`, permisos correctos y el `.env` de producción. **No actives esa variable todavía.**
-
-## 5. Pruebas locales
-
-Con Python 3.12, en el directorio raíz:
+Con Python 3.12 y soporte `venv/ensurepip` instalado:
 
 ```bash
 python3 -m venv .venv
@@ -178,19 +118,48 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-Sin `TEST_DATABASE_URL`, la prueba concurrente de PostgreSQL se omite de forma explícita. Para ejecutarla en un PostgreSQL de prueba **independiente**, se utiliza esa variable con una DB de pruebas vacía; **la prueba elimina tablas del esquema**, por lo que **jamás** uses tu base de datos real. El CI crea automáticamente una base desechable `medinet_ci` para ello.
+Para ejecutar **toda** la suite, configurar `TEST_DATABASE_URL` mediante un
+archivo privado o variable de entorno que apunte a PostgreSQL **desechable**,
+con base terminada en `_test` o `_ci`. Nunca apuntar a la instalación real:
+las pruebas existentes crean y eliminan tablas de prueba. Los nuevos ensayos de
+privilegios crean una base aislada y roles sin tocar usuarios de la aplicación
+real, por lo que el usuario de pruebas requiere administración en ese clúster.
+Sin la variable, las pruebas PostgreSQL se omiten explícitamente; no equivale a
+la validación completa. CI prepara un clúster temporal automáticamente.
 
-Para revisar migración sin manipular datos de tu entorno:
+Controles: Bandit (`app scripts`), pip-audit (runtime, desarrollo y navegador), `npm audit`
+con dependencias de desarrollo, actionlint, ShellCheck y Trivy de las tres
+imágenes, sin omitir avisos sin corrección. Las instrucciones y resultados están
+en la entrega técnica. Las pruebas del navegador se ejecutan únicamente contra
+una copia con usuarios ficticios y confirmación explícita de escritura.
+
+## Respaldo y recuperación
 
 ```bash
-docker compose exec api alembic current
+bash scripts/backup.sh --verify
 ```
 
-## 6. Criterios que faltan para v1.0
+Genera un directorio privado `backups/`, ignorado por Git y Docker: dump custom,
+roles globales, SHA-256 y comparación de todas las filas tras restaurar en otro
+PostgreSQL sin red. No detiene ni reemplaza la base original. Si hay escrituras
+simultáneas, la comparación puede diferir: repetir en ventana sin escrituras.
+El contenedor de verificación se detiene; no se elimina ningún volumen.
 
-- Despliegue real en EC2 de AWS Academy Learner Lab (`Start Lab`), SG mínimos, HTTPS y disponibilidad operativa.
-- Runner de entrega, publicación web y evidencia de pipeline con éxito, además de prueba y verificación desde un equipo externo.
-- Informe técnico formal: diagramas de arquitectura y BD, aplicación ISO 27034, matriz de OWASP Top 10, decisiones de hardening y capturas de pruebas reales.
-- Corrección de cualquier hallazgo que el pipeline reporte en las imágenes y las dependencias.
+No publicar dumps ni `globals.sql`: contienen datos y hashes de contraseñas.
+Guardar otra copia cifrada fuera de la instancia y ensayar recuperación antes
+de producción. La recuperación sobre datos existentes exige revisión y
+aprobación; no ejecutar restauraciones destructivas de forma automática.
 
-Consulta `docs/CHECKLIST_RUBRICA.md`, `docs/SEGURIDAD.md` y `docs/ARQUITECTURA.md`.
+## GitHub Actions y EC2
+
+El [workflow](.github/workflows/ci-cd.yml) define Build, Test, Security Scan,
+publicación GHCR y Deploy EC2. Validar los cambios antes del commit y esperar
+autorización para push. Las verificaciones locales no acreditan un pipeline
+remoto exitoso.
+
+El despliegue está condicionado a `ENABLE_EC2_DEPLOY=true`, runner privado
+`[self-hosted, linux, medinet-ec2]` y environment `production`. Requiere `.env` y
+`.env.runtime` privados en `/opt/medinet-pab`, respaldo/restauración verificable,
+migraciones administrativas y revisión de grants antes de levantar la API.
+Nunca activar sin TLS, Security Groups mínimos y verificación externa. No se
+hicieron cambios en AWS durante esta auditoría.

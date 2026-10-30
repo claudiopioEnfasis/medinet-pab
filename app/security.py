@@ -85,7 +85,9 @@ def require_roles(*roles: str):
 
 def authenticate(username: str, password: str, db: Session) -> AppUser | None:
     now_epoch = int(datetime.now(timezone.utc).timestamp())
-    user = db.scalar(select(AppUser).where(AppUser.username == username))
+    # El contador y el bloqueo se actualizan bajo el mismo bloqueo de fila.
+    # Sin él, intentos simultáneos pueden sobrescribir failed_logins.
+    user = db.scalar(select(AppUser).where(AppUser.username == username).with_for_update())
     # Verificación ficticia para reducir filtración por tiempo cuando no existe usuario.
     valid = verify_password(password, user.password_hash if user else DUMMY_HASH)
     if user is None or not user.is_active:

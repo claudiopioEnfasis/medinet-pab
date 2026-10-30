@@ -18,28 +18,30 @@ jobs:
   backend-and-postgres:
     name: Pruebas FastAPI + PostgreSQL
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:17-alpine
-        env:
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: ci-only-demo-password
-          POSTGRES_DB: medinet_ci
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U test_user -d medinet_ci"
-          --health-interval 5s --health-timeout 5s --health-retries 12
     env:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: ci-only-demo-password
+      POSTGRES_DB: medinet_ci
       JWT_SECRET: ci-only-generated-test-secret-with-32-bytes-minimum
       TEST_DATABASE_URL: postgresql+psycopg://test_user:ci-only-demo-password@localhost:5432/medinet_ci
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
+      - name: Construir PostgreSQL corregido y preparar base desechable
+        run: |
+          docker build -f Dockerfile.postgres -t medinet-pab-db:ci .
+          docker run -d --name medinet-ci --mount type=tmpfs,destination=/var/lib/postgresql/data -p 127.0.0.1:5432:5432 -e POSTGRES_USER -e POSTGRES_PASSWORD -e POSTGRES_DB --health-cmd 'pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB"' --health-interval 2s --health-retries 30 medinet-pab-db:ci
+          for _ in $(seq 1 60); do
+            if [ "$(docker inspect --format '{{json .State.Health.Status}}' medinet-ci)" = '"healthy"' ]; then
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
       - name: Dependencias de test y driver de PostgreSQL
         run: |
           python -m pip install --upgrade pip
@@ -58,6 +60,12 @@ jobs:
           DATABASE_URL: postgresql+psycopg://test_user:ci-only-demo-password@localhost:5432/medinet_ci
         run: |
           python -c 'from scripts.seed_demo import seed; first = seed(); second = seed(); assert first["totales"] == second["totales"]; assert first["totales"]["cirugias"] == 12; assert not any(second["creados"].values())'
+      - name: Detener PostgreSQL de pruebas
+        if: always()
+        run: |
+          if docker container inspect medinet-ci >/dev/null 2>&1; then
+            docker stop medinet-ci
+          fi
 
   frontend:
     name: Compilación y dependencias React
@@ -66,10 +74,10 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: '22'
           package-manager-cache: false
@@ -78,55 +86,86 @@ jobs:
       - name: Compilar interfaz
         run: npm run build
       - name: Security SCA npm
-        run: npm audit --audit-level=high --omit=dev
+        run: npm audit --audit-level=high
 
   sast-sca:
     name: Análisis estático y dependencias Python
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: '3.12'
+      - name: Validar sintaxis del workflow
+        run: docker run --rm -v "$PWD:/repo:ro" -w /repo rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 -config-file .github/actionlint.yaml .github/workflows/ci-cd.yml
+      - name: Validar scripts operativos
+        run: docker run --rm -v "$PWD:/repo:ro" koalaman/shellcheck@sha256:bb596a0d169b85ddd81d8b6d3a2ff6d5baf5fca10b97f575ebc647c3dff62b3d /repo/scripts/backup.sh /repo/scripts/provision_runtime.sh
       - name: Instalar herramientas de escaneo
-        run: pip install bandit pip-audit
+        run: pip install bandit==1.9.4 pip-audit==2.10.1
       - name: Bandit SAST
         run: bandit -r app scripts -q
       - name: Pip-audit SCA
-        run: pip-audit -r requirements.txt
+        run: pip-audit -r requirements-dev.txt -r requirements-browser.txt
 
   image-scan:
     name: Imágenes Docker y escaneo Trivy
     runs-on: ubuntu-latest
     needs: [backend-and-postgres, frontend, sast-sca]
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - name: Construcción multi-stage backend
         run: docker build -t medinet-pab-api:ci .
       - name: Construcción multi-stage frontend
         run: docker build -t medinet-pab-web:ci ./frontend
+      - name: Construcción PostgreSQL con gosu corregido
+        run: docker build -f Dockerfile.postgres -t medinet-pab-db:ci .
       - name: Trivy backend
-        uses: aquasecurity/trivy-action@v0.36.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
+          version: v0.76.1
           image-ref: medinet-pab-api:ci
           format: table
           vuln-type: os,library
           severity: HIGH,CRITICAL
-          ignore-unfixed: true
+          ignore-unfixed: false
           exit-code: '1'
       - name: Trivy frontend
-        uses: aquasecurity/trivy-action@v0.36.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
+          version: v0.76.1
           image-ref: medinet-pab-web:ci
           format: table
           vuln-type: os,library
           severity: HIGH,CRITICAL
-          ignore-unfixed: true
+          ignore-unfixed: false
           exit-code: '1'
+      - name: Trivy PostgreSQL
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          version: v0.76.1
+          image-ref: medinet-pab-db:ci
+          format: table
+          vuln-type: os,library
+          severity: HIGH,CRITICAL
+          ignore-unfixed: false
+          exit-code: '1'
+      - name: Conservar exactamente las imágenes que aprobaron Trivy
+        run: |
+          docker save medinet-pab-api:ci medinet-pab-web:ci medinet-pab-db:ci | gzip -1 > medinet-images.tar.gz
+          sha256sum medinet-images.tar.gz > medinet-images.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: scanned-images
+          path: |
+            medinet-images.tar.gz
+            medinet-images.sha256
+          compression-level: 0
+          retention-days: 3
+          if-no-files-found: error
 
   publish:
     name: Publicar imágenes versionadas en GHCR
@@ -137,27 +176,26 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          persist-credentials: false
-      - uses: docker/setup-buildx-action@v3
-      - uses: docker/login-action@v3
+          name: scanned-images
+      - name: Verificar y cargar imágenes escaneadas
+        run: |
+          sha256sum -c medinet-images.sha256
+          gzip -dc medinet-images.tar.gz | docker load
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Normalizar nombre del paquete
-        run: echo "IMAGE_PREFIX=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
-      - uses: docker/build-push-action@v7
-        with:
-          context: .
-          push: true
-          tags: ${{ env.IMAGE_PREFIX }}-api:sha-${{ github.sha }}
-      - uses: docker/build-push-action@v7
-        with:
-          context: ./frontend
-          push: true
-          tags: ${{ env.IMAGE_PREFIX }}-web:sha-${{ github.sha }}
+      - name: Publicar las mismas imágenes por SHA sin reconstruir
+        run: |
+          image_prefix="ghcr.io/${GITHUB_REPOSITORY,,}"
+          for service in api web db; do
+            target="$image_prefix-$service:sha-$GITHUB_SHA"
+            docker tag "medinet-pab-$service:ci" "$target"
+            docker push "$target"
+          done
 
   deploy-ec2:
     name: Deploy EC2 (se habilita en v1.0)
@@ -170,7 +208,7 @@ jobs:
       packages: read
     environment: production
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
       - name: Desplegar imágenes etiquetadas por SHA
@@ -180,11 +218,21 @@ jobs:
         run: |
           set -eu
           test -f /opt/medinet-pab/.env
+          test -f /opt/medinet-pab/.env.runtime
+          # Respaldar y ensayar restauración ANTES de cualquier migración.
+          cd /opt/medinet-pab
+          bash "$GITHUB_WORKSPACE/scripts/backup.sh" --verify
+          cd "$GITHUB_WORKSPACE"
           cp compose.prod.yaml /opt/medinet-pab/compose.yaml
+          DOCKER_CONFIG="$(mktemp -d)"
+          export DOCKER_CONFIG
+          trap 'docker logout ghcr.io >/dev/null 2>&1; rm -rf "$DOCKER_CONFIG"' EXIT
           echo "$GH_TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
           export IMAGE_PREFIX="ghcr.io/${GITHUB_REPOSITORY,,}"
           export IMAGE_TAG="sha-${GITHUB_SHA}"
           docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml config --quiet
-          docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml pull
+          docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml --profile maintenance pull
+          docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml --profile maintenance run --rm maintenance
+          docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml --profile maintenance run --rm maintenance python -m scripts.db_privileges
           docker compose --project-directory /opt/medinet-pab -f /opt/medinet-pab/compose.yaml up -d --wait --wait-timeout 120
           curl --fail --silent --show-error --retry 8 --retry-delay 3 --retry-connrefused --max-time 10 http://127.0.0.1:3000/api/health/ready

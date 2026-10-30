@@ -1,0 +1,2 @@
+# Opcional: pruebas de navegador contra una copia aislada; no es runtime/CI base.
+playwright==1.64.1

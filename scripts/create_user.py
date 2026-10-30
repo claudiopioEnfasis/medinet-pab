@@ -1,6 +1,6 @@
 """Crea usuarios demo sin contraseñas en CLI, logs ni repositorio.
 
-Uso: docker compose exec -it api python -m scripts.create_user admin admin
+Uso: docker compose --profile maintenance run --rm maintenance python -m scripts.create_user admin admin
 """
 import getpass
 import sys

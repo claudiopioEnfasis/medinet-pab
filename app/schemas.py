@@ -25,6 +25,7 @@ class Urgency(str, Enum):
 
 
 class RoomCreate(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
     code: str = Field(min_length=2, max_length=24, pattern=r"^[A-Za-z0-9_-]+$")
     name: str = Field(min_length=3, max_length=100)
 
@@ -40,6 +41,7 @@ class RoomStatusUpdate(BaseModel):
 
 
 class PatientCreate(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
     reference: str = Field(min_length=2, max_length=32, pattern=r"^[A-Za-z0-9_-]+$")
     full_name: str = Field(min_length=3, max_length=120)
 
@@ -77,6 +79,7 @@ class Interval(BaseModel):
 
 
 class SurgeryCreate(Interval):
+    model_config = ConfigDict(str_strip_whitespace=True)
     room_id: int = Field(gt=0)
     patient_id: int = Field(gt=0)
     staff_ids: list[int] = Field(min_length=1, max_length=30)

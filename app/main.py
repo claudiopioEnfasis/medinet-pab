@@ -1,6 +1,7 @@
 """API REST de quirófanos y cirugías MediNet-Core / PAB."""
 from contextlib import asynccontextmanager
 from datetime import datetime
+import os
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy import or_, select, text
@@ -28,6 +29,7 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(
+    root_path=os.getenv("API_ROOT_PATH", ""),
     title="MediNet-Core - Módulo 6: Pabellones y Quirófanos (PAB)",
     version="0.5.0",
     description=("Módulo 6 PAB de MediNet-Core. Gestiona pabellones y cirugías "
@@ -201,7 +203,7 @@ def get_surgery(surgery_id: int, db: Session = Depends(get_db)):
 @app.get("/availability", response_model=AvailabilityOut, tags=["Cirugías"], dependencies=[Depends(current_user)])
 def check_availability(
     room_id: int = Query(gt=0), patient_id: int = Query(gt=0),
-    staff_ids: list[int] = Query(min_length=1),
+    staff_ids: list[int] = Query(min_length=1, max_length=30),
     starts_at: datetime = Query(), ends_at: datetime = Query(),
     db: Session = Depends(get_db),
 ):
@@ -275,6 +277,16 @@ def change_surgery_status(surgery_id: int, payload: SurgeryStatusUpdate, db: Ses
     if payload.status == SurgeryStatus.in_progress:
         if room.status != "available":
             raise HTTPException(409, detail="Quirófano no disponible para comenzar")
+        # El horario reservado no garantiza disponibilidad real si una operación
+        # se prolonga o se inicia anticipadamente en otro pabellón.
+        active = db.scalar(select(Surgery.id).where(
+            Surgery.id != surgery.id,
+            Surgery.status == "in_progress",
+            or_(Surgery.patient_id == surgery.patient_id,
+                Surgery.staff.any(MedicalStaff.id.in_([m.id for m in surgery.staff]))),
+        ).limit(1))
+        if active is not None:
+            raise HTTPException(409, detail="Paciente o integrante del equipo médico en otra cirugía en curso")
         room.status = "occupied"
     if payload.status == SurgeryStatus.completed:
         room.status = "sanitizing"
@@ -303,6 +315,12 @@ def _custom_openapi():
                     responses.setdefault("403", {"description": "Permiso insuficiente para el rol"})
             if path.startswith("/surgeries/") or path.startswith("/operating-rooms/"):
                 responses.setdefault("404", {"description": "Recurso no encontrado"})
+            if path == "/availability" or (path == "/surgeries" and method == "post"):
+                responses.setdefault("404", {"description": "Quirófano, paciente o profesional no encontrado"})
+            if path in {"/patients", "/medical-staff"} and method == "post":
+                responses.setdefault("409", {"description": "La referencia ya existe"})
+            if path == "/health/ready":
+                responses.setdefault("503", {"description": "Base de datos no disponible"})
             if path.startswith("/surgeries") or (path.startswith("/operating-rooms") and method != "get"):
                 responses.setdefault("409", {"description": "Conflicto de estado, disponibilidad o datos duplicados"})
     app.openapi_schema = schema
