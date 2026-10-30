@@ -150,11 +150,35 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  secret-scan:
+    name: Security Scan secretos (historial y árbol actual)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Preparar reportes redactados
+        run: mkdir -p reports
+      - name: Gitleaks 8.30.1 historial completo disponible
+        run: docker run --rm -v "$PWD:/repo:ro" -v "$PWD/reports:/reports" zricethezav/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f git /repo --log-opts='--all --full-history' --redact=100 --report-format json --report-path /reports/gitleaks-history.json
+      - name: Gitleaks árbol actual (también archivos completos)
+        if: ${{ !cancelled() }}
+        run: docker run --rm -v "$PWD:/repo:ro" -v "$PWD/reports:/reports" zricethezav/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f dir /repo --redact=100 --report-format json --report-path /reports/gitleaks-current.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: secret-scan-redacted
+          path: reports/gitleaks-*.json
+          if-no-files-found: warn
+          retention-days: 14
+
   image-scan:
     timeout-minutes: 30
     name: Build Docker + Security Scan Trivy
     runs-on: ubuntu-24.04
-    needs: [backend-and-postgres, frontend, sast-sca]
+    needs: [backend-and-postgres, frontend, sast-sca, secret-scan]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:

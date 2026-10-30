@@ -76,6 +76,12 @@ detiene incluso cuando las pruebas fallan.
 
 ## 4. Security Scan y política
 
+Se añadió Gitleaks 8.30.1 por digest para historial completo disponible y árbol
+actual, sin supresiones añadidas y con redacción total. Bloquea la publicación
+ante hallazgos. El nuevo gate requiere validación remota tras push autorizado.
+Ver [auditoría de publicación](AUDITORIA_PUBLICACION_GITHUB.md) para alcance y
+pendientes de GHCR; esta incorporación no habilita CD.
+
 | Control | Versión / alcance | Condición de bloqueo |
 |---|---|---|
 | Bandit | 1.9.4; app y scripts | Cualquier hallazgo según severidad/confianza predeterminadas, sin exclusiones añadidas |

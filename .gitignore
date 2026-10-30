@@ -35,3 +35,28 @@ Thumbs.db
 # Estado privado de despliegue y reportes temporales CI
 .deployment/
 reports/
+
+# Protección adicional antes de publicación pública
+*.env
+*.env.*
+.envrc
+.pgpass
+.netrc
+.npmrc
+.pypirc
+id_rsa*
+id_ed25519*
+id_ecdsa*
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+*.sql
+*.db
+*.sqlite
+*.tfstate
+*.tfstate.*
+*.log
+
+# Conservar únicamente la plantilla revisada sin valores secretos
+!.env.example
