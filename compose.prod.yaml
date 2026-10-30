@@ -1,9 +1,9 @@
-# Composición preparada para v1.0 en EC2 con runner autoalojado.
+# Composición EC2: entrega SSH restringida desde runner efímero de GitHub.
 # Nginx público con TLS se configurará en v1.0. Por ahora solo loopback.
 name: medinet-pab
 services:
   db:
-    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-db:${IMAGE_TAG:?Define IMAGE_TAG}
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-db:${POSTGRES_IMAGE_TAG:-${IMAGE_TAG:?Define IMAGE_TAG}}
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}

@@ -1,30 +1,19 @@
 """Pruebas reales PostgreSQL (requerido TEST_DATABASE_URL) con reservas concurrentes."""
-import os
 from concurrent.futures import ThreadPoolExecutor
 from threading import Barrier
 
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from app.db import Base, get_db
+from app.db import get_db
 from app.main import app
 from app.models import OperatingRoom, Patient, MedicalStaff, AppUser
 from app.security import hash_password, make_token
+from test_seed_demo import seed_session  # PostgreSQL: esquema aislado, preserva Alembic/public
 
 
 @pytest.mark.postgres
-def test_postgres_parallel_reservations():
-    url = os.getenv("TEST_DATABASE_URL")
-    if not url:
-        pytest.skip("Define TEST_DATABASE_URL para ejecutar esta prueba con PostgreSQL")
-    pg = create_engine(url, pool_pre_ping=True)
-    assert pg.dialect.name == "postgresql"
-    # Defensivo: la prueba crea y elimina tablas; impedir uso de una BD real.
-    assert pg.url.database.endswith(("_test", "_ci")), "TEST_DATABASE_URL debe apuntar a una BD _test o _ci"
-    assert url != os.getenv("DATABASE_URL"), "No ejecutes esta prueba sobre DATABASE_URL de producción"
-    Base.metadata.create_all(pg)
-    Session = sessionmaker(bind=pg, expire_on_commit=False)
+def test_postgres_parallel_reservations(seed_session):
+    Session = seed_session
     try:
         with Session.begin() as session:
             room = OperatingRoom(code="PG-TEST", name="Sala PG", status="available")
@@ -55,5 +44,3 @@ def test_postgres_parallel_reservations():
         assert sorted(results) == [201, 409], results
     finally:
         app.dependency_overrides.clear()
-        Base.metadata.drop_all(pg)
-        pg.dispose()

@@ -1,0 +1,89 @@
+name: MediNet PAB - Deploy EC2
+
+on:
+  workflow_run:
+    workflows: [MediNet PAB - CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      image_sha:
+        description: SHA completo de main con CI/publicación exitosos
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: medinet-production
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  resolve:
+    name: Verificar origen y release aprobado
+    if: >-
+      vars.ENABLE_EC2_DEPLOY == 'true' && vars.EC2_SECURITY_REVIEWED == 'true' &&
+      ((github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.head_repository.full_name == github.repository) ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      image_sha: ${{ steps.release.outputs.image_sha }}
+    steps:
+      - name: Exigir SHA actual de main y CI push exitoso
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          REQUESTED_SHA: ${{ github.event.inputs.image_sha || github.event.workflow_run.head_sha }}
+        run: |
+          [[ $REQUESTED_SHA =~ ^[0-9a-f]{40}$ ]]
+          main_sha=$(gh api "repos/$REPOSITORY/commits/main" --jq '.sha')
+          [[ $REQUESTED_SHA == "$main_sha" ]]
+          runs=$(gh api "repos/$REPOSITORY/actions/runs?head_sha=$REQUESTED_SHA&event=push&per_page=100" --jq '[.workflow_runs[] | select(.head_branch == "main" and .path == ".github/workflows/ci-cd.yml" and .name == "MediNet PAB - CI" and .conclusion == "success")] | length')
+          [[ $runs -gt 0 ]]
+          echo "image_sha=$REQUESTED_SHA" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    name: Deployment production (requiere aprobación)
+    needs: resolve
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: production
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Entrega SSH con host key fija y comando forzado
+        env:
+          IMAGE_SHA: ${{ needs.resolve.outputs.image_sha }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_PORT: ${{ vars.EC2_PORT || '22' }}
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.EC2_KNOWN_HOSTS }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +x
+          umask 077
+          [[ $IMAGE_SHA =~ ^[0-9a-f]{40}$ ]]
+          [[ $EC2_USER =~ ^[a-z_][a-z0-9_-]*$ && $EC2_HOST =~ ^[A-Za-z0-9.-]+$ ]]
+          [[ $EC2_PORT =~ ^[0-9]{1,5}$ && $EC2_PORT -gt 0 && $EC2_PORT -le 65535 ]]
+          [[ -n $SSH_PRIVATE_KEY && -n $SSH_KNOWN_HOSTS ]]
+          ssh_directory=$(mktemp -d)
+          trap 'rm -rf -- "$ssh_directory"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$ssh_directory/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$ssh_directory/known_hosts"
+          printf '%s\n%s\n' "$GHCR_USER" "$GHCR_TOKEN" |
+            ssh -i "$ssh_directory/key" -p "$EC2_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o ForwardAgent=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_directory/known_hosts" -o ConnectTimeout=15 "$EC2_USER@$EC2_HOST" "deploy $IMAGE_SHA"

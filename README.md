@@ -152,14 +152,11 @@ aprobación; no ejecutar restauraciones destructivas de forma automática.
 
 ## GitHub Actions y EC2
 
-El [workflow](.github/workflows/ci-cd.yml) define Build, Test, Security Scan,
-publicación GHCR y Deploy EC2. Validar los cambios antes del commit y esperar
-autorización para push. Las verificaciones locales no acreditan un pipeline
-remoto exitoso.
+La [guía CI/CD](docs/GITHUB_ACTIONS_CICD.md) documenta Build, Test PostgreSQL
+sin omisiones, Security Scan, publicación GHCR por SHA y despliegue SSH restringido
+en un workflow separado. No requiere runner self-hosted ni credenciales AWS.
 
-El despliegue está condicionado a `ENABLE_EC2_DEPLOY=true`, runner privado
-`[self-hosted, linux, medinet-ec2]` y environment `production`. Requiere `.env` y
-`.env.runtime` privados en `/opt/medinet-pab`, respaldo/restauración verificable,
-migraciones administrativas y revisión de grants antes de levantar la API.
-Nunca activar sin TLS, Security Groups mínimos y verificación externa. No se
-hicieron cambios en AWS durante esta auditoría.
+La revisión local aprobó 76 pruebas. Existe una ejecución remota exitosa del
+commit anterior; estos cambios todavía requieren push autorizado y una nueva
+validación remota. EC2 permanece deshabilitado, pendiente de preparación,
+protecciones de GitHub disponibles según el plan, HTTPS y prueba real de entrega.

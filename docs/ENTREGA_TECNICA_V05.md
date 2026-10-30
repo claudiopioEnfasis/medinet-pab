@@ -283,47 +283,12 @@ login/lecturas/escrituras. No imprimir secretos ni pasarlos como argumentos CLI.
 
 ## 8. GitHub Actions y requisitos AWS Academy EC2
 
-Etapas implementadas: tests backend/PostgreSQL, build React, SAST/SCA,
-construcción/Trivy de tres imágenes, publicación GHCR y despliegue EC2 condicionado.
-Las acciones están fijadas por SHA. La publicación reutiliza el archivo de
-imágenes escaneadas, con SHA-256, sin reconstruir dependencias entre gate y push.
-No se ejecutó ninguna publicación desde esta sesión.
-
-| Recurso/variable | Configuración requerida |
-|---|---|
-| GITHUB_TOKEN | Token automático; contents:read, packages:write solo en publicación y packages:read en entrega |
-| ENABLE_EC2_DEPLOY | Variable del repositorio, conservar desactivada hasta terminar preparación |
-| production | GitHub Environment; configurar revisores, ramas y protección |
-| Runner | Self-hosted privado Linux/AMD64, etiquetas linux y medinet-ec2; Docker, Bash, Python3, curl, gzip y SHA-256 |
-| IMAGE_PREFIX | Prefijo GHCR normalizado en minúsculas; lo calcula el workflow |
-| IMAGE_TAG | `sha-<github.sha>`; lo calcula el workflow |
-| .env / .env.runtime | Archivos 0600 en `/opt/medinet-pab`; fuera de Git y artefactos |
-| Acceso inicial GHCR | Verificar acceso del repositorio a paquetes; PAT read:packages solo si es imprescindible fuera de Actions, guardado privadamente |
-
-El workflow no requiere claves AWS ni tokens temporales del laboratorio:
-usa un runner ya instalado en EC2. No agregar claves Academy a GitHub ni a
-imágenes. El token automático puede necesitar habilitación de Packages y vínculo
-del repositorio en GHCR; comprobarlo con una ejecución real autorizada.
-
-Preparación pendiente de Matías: Learner Lab activo, EC2 con capacidad/disco para
-Docker y **respaldos restaurados en tmpfs**, almacenamiento persistente, arquitectura
-compatible, acceso administrativo limitado, actualizaciones del host, reloj/NTP,
-respaldo externo, monitorización y capacidad de recuperar la instancia. Las
-sesiones del laboratorio pueden detener recursos; documentar el procedimiento.
-El runner con Docker tiene privilegios elevados en el host: dedicarlo a este
-repositorio confiable y proteger el environment de producción.
-
-Security Groups pendientes: SSH solo desde IP/red administrativa; 443 público
-cuando haya TLS; 80 únicamente si se necesita redirección o validación del
-certificado. **No abrir 5432, 8000 ni 3000 a Internet.** DB queda en red Docker
-privada. Instalar proxy TLS en el host hacia loopback:3000, definir dominio,
-certificado/renovación y cabeceras. No habilitar HSTS antes de comprobar HTTPS.
-
-La entrega EC2 prevista comprueba archivos privados, respalda/restaura,
-instala la composición, descarga imágenes SHA, ejecuta migraciones administrativas,
-reaplica grants, espera servicios saludables y comprueba readiness. Es código
-preparado y validado sintácticamente; **no es un despliegue probado en EC2**.
-La primera instalación debe preparar BD/runtime antes de activar automatización.
+La preparación CI/CD fue actualizada después de esta entrega. Consultar
+[GITHUB_ACTIONS_CICD.md](GITHUB_ACTIONS_CICD.md), que reemplaza el diseño anterior
+con runner self-hosted por CI y CD separados y SSH restringido desde un runner
+efímero de GitHub. Incluye las limitaciones reales del plan privado de GitHub,
+la ejecución remota anterior verificada, 76 pruebas locales y los pasos aún
+pendientes de validación remota y EC2. No habilitar CD hasta completar esa guía.
 
 ## 9. Verificar el despliegue y continuar
 

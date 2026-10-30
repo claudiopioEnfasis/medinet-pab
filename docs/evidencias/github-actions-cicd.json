@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-30",
+  "base_commit": "add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+  "new_workflows_remote_verified": false,
+  "aws_deployed": false,
+  "pytest": {
+    "passed": 76,
+    "skipped": 0,
+    "failed": 0,
+    "postgresql": "real disposable PostgreSQL 17",
+    "migration_before_and_after": true,
+    "seed_idempotent": true,
+    "deployment_simulations": 6
+  },
+  "build": {
+    "react": true,
+    "docker_api": true,
+    "docker_web": true,
+    "docker_db": true
+  },
+  "security": {
+    "bandit_findings": 0,
+    "pip_audit_findings": 0,
+    "npm_audit_findings": 0,
+    "trivy": {
+      "api": {},
+      "web": {},
+      "db": {}
+    },
+    "actionlint": "passed",
+    "shellcheck": "passed",
+    "suppressions_added": false
+  },
+  "remote_baseline": {
+    "run_url": "https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41089671930",
+    "conclusion": "success",
+    "build_test_security_publish": "success",
+    "ec2": "skipped",
+    "applies_to_new_changes": false
+  },
+  "github_pending": [
+    "authorized commit/push and new CI run",
+    "main protection unavailable: HTTP 403 private repository plan limitation",
+    "production environment protection availability and configuration",
+    "EC2 secrets and reviewed SSH setup"
+  ],
+  "deployment_enabled": false,
+  "production_data_or_volumes_removed": false
+}

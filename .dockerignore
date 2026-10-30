@@ -27,3 +27,7 @@ frontend/dist
 docs
 tests
 *.log
+
+# Estado privado de despliegue y reportes temporales CI
+.deployment/
+reports/
