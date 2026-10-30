@@ -1,9 +1,13 @@
 # Auditoría de seguridad antes de publicar MediNet PAB
 
 Fecha: 30-10-2026. Repositorio: https://github.com/claudiopioEnfasis/medinet-pab.
-Base revisada: `5e45c59da77e38a7c551cbe24a90072293b2475b` más los cambios locales
+Base de la auditoría inicial: `5e45c59da77e38a7c551cbe24a90072293b2475b` más los cambios locales
 indicados aquí. El repositorio permanece **privado**. No se hizo push, no se
 reescribió historial, no se modificaron credenciales ni se realizaron cambios AWS.
+
+**Actualización final GHCR:** commit `c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be`.
+La sección 10 actualiza cobertura, digests y conclusión; las secciones anteriores
+conservan los resultados y alcance de la auditoría inicial.
 
 ## 1. Alcance y límites
 
@@ -15,10 +19,11 @@ Se compararon los secretos locales conocidos con el contenido histórico sin
 imprimir sus valores. Los archivos privados se leyeron exclusivamente para
 verificación: no se modificaron ni copiaron al informe.
 
-**Límite relevante:** el inventario de paquetes GHCR devolvió HTTP 403 por ausencia
-de alcance `read:packages`. Se inspeccionaron las imágenes recuperables de los
-artefactos de Actions, pero no se puede certificar que representen **todas** las
-versiones/paquetes actualmente almacenados en GHCR ni su visibilidad efectiva.
+**Límite inicial y actualización:** la API de inventario GHCR devolvió HTTP 403
+por ausencia de alcance `read:packages`. El propietario posteriormente confirmó
+las nueve versiones y se completó la inspección de sus nueve artefactos (sección
+10). Sigue pendiente comprobar los digests actuales de esos tags y su visibilidad
+efectiva mediante lectura independiente del registro.
 No se pidieron tokens adicionales ni se modificaron permisos de cuenta.
 No se inspeccionaron recursos reales AWS ni copias externas del repositorio.
 La auditoría identifica exposición de secretos; no demuestra su ausencia absoluta.
@@ -187,7 +192,7 @@ Workflows revisados: [CI](../.github/workflows/ci-cd.yml) y
   checks, main como rama permitida, impedir autoaprobación y limitar bypass. No
   asumir que el nombre production o main impone por sí solo estas restricciones.
 
-Evidencia remota actualizada:
+Evidencia remota de la auditoría inicial (actualización posterior en sección 10):
 
 - [CI 41114841130](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41114841130):
   éxito en `5e45c59...`; Test PostgreSQL, Python/YAML, React/npm, Docker/Trivy y
@@ -195,8 +200,8 @@ Evidencia remota actualizada:
 - [CD 41115368500](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41115368500):
   **skipped**, mismo SHA; no acredita despliegue.
 - Se revisaron también los runs 41089671930 y 41022533818 y sus logs disponibles.
-- El gate Gitleaks añadido en esta auditoría **todavía no se ha enviado ni ejecutado
-  en GitHub**. Éxito de un run previo no valida cambios nuevos.
+- El gate Gitleaks no estaba ejecutado remotamente al cerrar la auditoría inicial.
+  La continuación verificó que sí aprobó en el run 41133919857; ver sección 10.
 
 ## 7. Efectos de hacer público GitHub/GHCR/documentación
 
@@ -255,24 +260,147 @@ No se confirmó ninguno que obligue ahora a reescribir historial. Si aparece uno
    renovar clones y repetir detectores. Limpiar historial no vuelve válido un
    secreto ya divulgado: revocación/rotación sigue siendo obligatoria.
 
-## 10. Pendientes y recomendación
+## 10. Auditoría final GHCR: nueve imágenes
 
-1. Cerrar A-01 con inventario GHCR autorizado (interfaz del propietario o acceso de
-   lectura de paquetes), revisar visibilidad y **todas** las versiones retenidas.
-   No pegar tokens en chat; registrar solo paquete, digest y resultado redactado.
-2. Revisar y, si se autoriza en otro turno, publicar estos cambios para comprobar
-   Gitleaks en una ejecución real. No se hizo push en esta auditoría.
-3. Mantener ambas variables de CD desactivadas/ausentes. Cuando se autorice hacer
-   público, configurar inmediatamente controles de main, PR externos y production;
-   no habilitar CD hasta que las protecciones y el destino hayan sido ensayados.
-4. Preparar por separado la rotación de credencial administrativa débil antes de
-   EC2; nunca usar credenciales locales en AWS. Conservar backup y acceso previo.
-5. Confirmar consentimiento de identidad de autores y mantener únicamente datos
-   ficticios en futuras capturas/fixtures.
+### Inventario y cobertura efectiva
 
-No se ha demostrado una filtración de secretos en el código o historial revisados.
-Sin embargo, queda incompleta la comprobación requerida de GHCR; por ello no se
-emite una aprobación integral de publicación todavía. La conclusión es de cobertura
-pendiente, **no una afirmación de que se encontró una clave real expuesta**.
+El propietario confirmó en GitHub, en esta conversación, exactamente tres versiones
+etiquetadas por paquete y ninguna sin etiqueta. Esta confirmación **cierra el
+inventario visual declarado**; no se atribuye a una consulta automática ni a una
+captura inspeccionada por este agente. No se utiliza como prueba de ausencia de
+secretos. Las nueve combinaciones son:
+
+| Paquete | Tag SHA (prefijo) | Contenido inspeccionado | Fuente verificable |
+|---|---|---|---|
+| medinet-pab-db | `c7a98b40…` | Sí, artefacto; config y todas las capas | [run 41133919857](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41133919857) |
+| medinet-pab-api | `c7a98b40…` | Sí, artefacto; config y todas las capas | [run 41133919857](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41133919857) |
+| medinet-pab-web | `c7a98b40…` | Sí, artefacto; config y todas las capas | [run 41133919857](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41133919857) |
+| medinet-pab-api | `5e45c59d…` | Sí, artefacto; config y todas las capas | [run 41114841130](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41114841130) |
+| medinet-pab-web | `5e45c59d…` | Sí, artefacto; config y todas las capas | [run 41114841130](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41114841130) |
+| medinet-pab-db | `5e45c59d…` | Sí, artefacto; config y todas las capas | [run 41114841130](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41114841130) |
+| medinet-pab-api | `add85a09…` | Sí, artefacto; config y todas las capas | [run 41089671930](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41089671930) |
+| medinet-pab-web | `add85a09…` | Sí, artefacto; config y todas las capas | [run 41089671930](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41089671930) |
+| medinet-pab-db | `add85a09…` | Sí, artefacto; config y todas las capas | [run 41089671930](https://github.com/claudiopioEnfasis/medinet-pab/actions/runs/41089671930) |
+
+**Cobertura: 9/9 contenidos inspeccionados mediante artefactos; 0/9 únicamente
+existencia. Resolución directa de los tags actuales de GHCR: 0/9 verificada.**
+Esto distingue el contenido publicado en esos runs del contenido que el registro
+pueda servir hoy bajo un tag mutable.
+
+El run **41133919857** de c7a98b40… terminó en success: tests, Gitleaks, build,
+seguridad y publicación. Se descargó su artefacto scanned-images **13014596958**
+y logs. El CD **41134382990** quedó skipped; no se ejecutó despliegue. Los otros
+dos bundles se conservaron de los runs 41114841130 y 41089671930.
+
+### Integridad, correspondencia y significado de los digests
+
+1. Se calculó SHA-256 de cada uno de los tres archivos medinet-images.tar.gz y
+   se comparó con su checksum del artefacto: correctos.
+2. Se verificaron hashes de manifests OCI, config JSON y blobs de capas del
+   archivo, y los diff_ids de las capas descomprimidas contra rootfs.diff_ids:
+   **111 referencias de capa verificadas, 64 capas únicas extraídas**.
+3. Se revisó el workflow de ese commit: el job de publicación descarga el mismo
+   artefacto, verifica checksum, hace docker load y tag/push sin reconstruir.
+   Los logs nombran el repositorio de cada push y su digest. Es evidencia de
+   procedencia de publicación, no lectura independiente del estado actual de GHCR.
+4. No confundir digest de config (identidad/config de imagen), digest del manifest
+   OCI exportado y digest de manifest comunicado por GHCR al hacer push. Son
+   objetos diferentes; el transporte puede cambiar compresión/formato y su hash.
+   No se presenta una diferencia entre ellos como fuga o corrupción, ni se afirma
+   que los digests de publicación se recalcularon desde el servidor.
+
+Los hashes completos del artefacto, config y manifest OCI verificados figuran por
+imagen en el JSON de evidencia. Para contrastar desde GitHub, estos son los
+**digests de publicación observados en logs**:
+
+| Paquete | Tag SHA (prefijo) | Digest comunicado en docker push; pendiente de contraste actual |
+|---|---|---|
+| medinet-pab-db | `c7a98b40…` | `sha256:880dbbf01bbc95333a63cda3806c21a66f00f685938df974b67561d4e4643dd0` |
+| medinet-pab-api | `c7a98b40…` | `sha256:5d286f2e759a888a98fa98978522c745ea37b8a35d7397b4979de562be93db69` |
+| medinet-pab-web | `c7a98b40…` | `sha256:66311a789125e112237b3f95e112f732c2912ecb96b59a617455eb514fd1736b` |
+| medinet-pab-api | `5e45c59d…` | `sha256:f690e35cb999f0812ebaf1cb8850ec2d314eb40f37ffff3313a8445424789af7` |
+| medinet-pab-web | `5e45c59d…` | `sha256:5107d394165c28ef1d9dcec2cc15dc2934de98bed954f53090d128d943245ce9` |
+| medinet-pab-db | `5e45c59d…` | `sha256:22a4ac3569f968b60f13431a3491ecb264c00ebb446a76ace0ccd5db412ba20f` |
+| medinet-pab-api | `add85a09…` | `sha256:a838de72c5a232a80f61b189597c8185ef50e7f3ca6f7a64ce2028e43eaf49e0` |
+| medinet-pab-web | `add85a09…` | `sha256:2bfa1b91f38d0cd29be50fa6e889bfc86438f0dbfc062509918d72c581354c91` |
+| medinet-pab-db | `add85a09…` | `sha256:70c268f57700573d002e280729fefcb425c6c0471d364f8df759cb7778958ae4` |
+
+Los prefijos corresponden, sin ambigüedad, a estas etiquetas completas:
+
+- sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be
+- sha-5e45c59da77e38a7c551cbe24a90072293b2475b
+- sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67
+
+### Contenido, Gitleaks y clasificación
+
+Se reabrieron los tres bundles, extrayendo todos los archivos regulares de cada
+capa sin el límite anterior de 5 MB; se examinaron también config/ENV e historial.
+Se conservaron capas individuales, incluidas las ocultadas o borradas por capas
+posteriores, sin levantar contenedores de la aplicación, modificar datos ni cargar
+las imágenes sobre las locales. Los enlaces no se siguieron. No es un análisis
+forense de binarios u ofuscación deliberada.
+
+Gitleaks 8.30.1, digest ya documentado, escaneó el conjunto con red deshabilitada,
+redacción total y sin agregar supresiones. Resultado: **6 alertas**, código de
+salida **1**. Se mantienen como alertas, no se describe falsamente un exit 0:
+
+| Imagen | Regla / ubicación | Clasificación |
+|---|---|---|
+| API c7a98b40… | generic-api-key; config, ENV e historial de build | 2 huellas públicas GPG de verificación Python; falso positivo |
+| API 5e45c59… | misma regla y campos | 2 huellas públicas GPG; falso positivo |
+| API add85a09… | misma regla y campos | 2 huellas públicas GPG; falso positivo |
+| Web y DB, las tres versiones | Ninguna alerta Gitleaks | Sin secreto auténtico detectado |
+
+El archivo cacert.pem es un conjunto de certificados públicos de certifi en una
+capa base. Los SQL de extensiones y sistema de PostgreSQL son scripts del motor,
+no respaldos ni filas de pacientes. No se encontraron .env operativos, claves
+privadas, tokens GitHub/AWS, contraseñas o JWT reales en el material examinado.
+La comparación de los secretos locales conocidos de 16 o más caracteres contra
+config y bytes íntegros de todas las capas no encontró coincidencias. Los valores
+cortos no permiten esa atribución automática; su limitación contextual fue
+explicada en la auditoría inicial. El seed y recursos web recuperados corresponden
+a demostración ficticia; no se identificaron bases precargadas con datos clínicos.
+
+### Limitaciones concretas y cierre necesario
+
+La lectura HTTPS directa con el namespace real en minúsculas
+`ghcr.io/claudiopioenfasis/medinet-pab-{api,web,db}` devolvió **403 en las nueve
+combinaciones**. Se utilizó únicamente autenticación existente y no se modificó.
+Falta una autorización utilizable de **read:packages y lectura del paquete** para
+consultar manifests privados. El intento adicional de acceso con Docker tampoco
+permitió recuperar un manifest. No se solicitaron ni imprimieron tokens.
+
+Ninguna de las nueve versiones carece ya de inspección de contenido de su
+artefacto; las nueve carecen de comprobación independiente de **su resolución
+actual tag→digest en GHCR**. Se conserva esta diferencia material para no aprobar
+un tag que pudiera haber sido reasignado después del run inspeccionado.
+
+Para cerrar sin compartir credenciales, el propietario puede comparar en GitHub
+los nueve digests actuales de versión con la tabla anterior y registrar el
+resultado por paquete/tag. Si todos coinciden, se vincula el inventario visual al
+contenido auditado y se puede reevaluar A-01; si alguno difiere, hay que inspeccionar
+esa versión exacta. Alternativamente, permitir lectura autorizada de manifests y
+blobs por digest, sin ampliar a permisos de escritura o borrado. No bastan los
+nombres de tags ni la cantidad de versiones. No cambiar visibilidad para sortear
+la falta de acceso durante esta comprobación.
+
+A-01 queda **parcialmente cerrado**: inventario confirmado por el propietario y
+9/9 artefactos inspeccionados; falta el contraste de digests actuales. No se
+confirmaron secretos que requieran revocación ni limpieza de historial. Permanecen
+las medidas previas de no habilitar CD sin autorización, proteger main/production
+cuando corresponda y no reutilizar la credencial DB local débil en EC2.
+
+Solo se actualizaron este informe y su JSON publicable. Los scripts/reportes
+auxiliares están bajo backups/publication-audit/final-ghcr, privado e ignorado.
+No se cambiaron visibilidad, credenciales, archivos .env, código funcional,
+versiones de GHCR, contenedores existentes, bases, volúmenes ni recursos AWS;
+no se ejecutó push, force push o reescritura de historial.
+
+### Recomendación final
+
+La inspección de contenido se completó para las nueve imágenes conservadas en
+Actions y no identificó secretos auténticos. Se mantiene la decisión conservadora
+hasta contrastar los nueve digests actuales del registro; no se atribuye el
+bloqueo a una filtración demostrada ni a que falten tres imágenes por inspeccionar.
 
 **NO APTO PARA HACER PÚBLICO**

@@ -32,7 +32,7 @@ done < "$state/current.env"
 compose() {
   local release=$1
   shift
-  docker compose --project-directory "$root" --env-file "$root/.env" --env-file "$release" -f "$root/compose.yaml" "$@"
+  docker compose --project-directory "$root" --env-file "$root/.env" --env-file "$release" -f "$root/compose.prod.yaml" "$@"
 }
 query_schema() {
   compose "$state/current.env" exec -T db sh -c "exec psql -XAt -v ON_ERROR_STOP=1 -U \"\$POSTGRES_USER\" -d \"\$POSTGRES_DB\" -c 'SELECT version_num FROM alembic_version ORDER BY version_num'"
@@ -40,15 +40,21 @@ query_schema() {
 ready() {
   curl --fail --silent --show-error --retry 5 --retry-delay 2 --retry-connrefused --max-time 10 http://127.0.0.1:3000/api/health/ready > /dev/null
 }
+[[ -f $root/compose.prod.yaml && -f $root/scripts/backup.sh ]] || { echo 'Falta composición de producción o script de respaldo' >&2; exit 1; }
 compose "$state/current.env" config --quiet
 ready
 # Confirmar que la imagen DB coincide con el estado; su ciclo de actualización es separado.
 db_container=$(compose "$state/current.env" ps -q db)
 [[ $(docker inspect --format '{{.Config.Image}}' "$db_container") == "$prefix-db:$db_tag" ]] || { echo 'Imagen DB no coincide con estado aprobado' >&2; exit 1; }
+# No recuperar una versión distinta de la que efectivamente está ejecutándose.
+for service in api web; do
+  container=$(compose "$state/current.env" ps -q "$service")
+  [[ -n $container && $(docker inspect --format '{{.Config.Image}}' "$container") == "$prefix-$service:$previous_tag" ]] || { echo 'Release registrado no coincide con API/web activos' >&2; exit 1; }
+done
+schema_before=$(query_schema)
 next=$(mktemp "$state/next.XXXXXX.env")
 printf 'IMAGE_PREFIX=%s\nIMAGE_TAG=sha-%s\nPOSTGRES_IMAGE_TAG=%s\n' "$prefix" "$sha" "$db_tag" > "$next"
 changed=false
-schema_before=$(query_schema)
 rollback() {
   local code=$?
   trap - EXIT
@@ -78,14 +84,15 @@ changed=true
 compose "$state/current.env" stop web api
 (
   cd "$root"
-  export COMPOSE_FILE="$root/compose.yaml" IMAGE_PREFIX="$prefix" IMAGE_TAG="$previous_tag" POSTGRES_IMAGE_TAG="$db_tag"
-  bash "$root/bin/backup.sh" --verify
+  export COMPOSE_FILE="$root/compose.prod.yaml" IMAGE_PREFIX="$prefix" IMAGE_TAG="$previous_tag" POSTGRES_IMAGE_TAG="$db_tag"
+  bash "$root/scripts/backup.sh" --verify
 )
 compose "$next" --profile maintenance run --rm --no-deps maintenance
 compose "$next" --profile maintenance run --rm --no-deps maintenance python -m scripts.db_privileges
 [[ $(query_schema) == "$schema_before" ]] || { echo 'El esquema cambió inesperadamente' >&2; exit 1; }
 compose "$next" up -d --no-deps --wait --wait-timeout 120 api web
 ready
+[[ $(compose "$state/current.env" ps -q db) == "$db_container" ]] || { echo 'La identidad del contenedor DB cambió; revisar antes de continuar' >&2; exit 1; }
 # Persistir estado solo después de salud correcta; no tocar la configuración privada.
 cp "$state/current.env" "$state/previous.env"
 mv -- "$next" "$state/current.env"

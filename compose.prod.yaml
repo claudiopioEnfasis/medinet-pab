@@ -1,5 +1,5 @@
 # Composición EC2: entrega SSH restringida desde runner efímero de GitHub.
-# Nginx público con TLS se configurará en v1.0. Por ahora solo loopback.
+# TLS termina en el Nginx existente del host; web continúa solo en loopback.
 name: medinet-pab
 services:
   db:

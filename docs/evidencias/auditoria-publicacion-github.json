@@ -39,13 +39,13 @@
     ],
     "logs_files": 26,
     "non_image_artifacts_reviewed": 3,
-    "image_bundles_reviewed": 2,
-    "images_reviewed": 6,
+    "image_bundles_reviewed": 3,
+    "images_reviewed": 9,
     "image_bundles_checksums_valid": true,
-    "files_above_5mb_not_text_scanned": true,
     "ghcr_complete_inventory_verified": false,
     "ghcr_inventory_http_status": 403,
-    "ghcr_inventory_reason": "Missing read:packages scope; actual additional versions/visibility unknown"
+    "ghcr_inventory_reason": "Owner confirms complete 3x3 inventory; current GHCR manifests still HTTP 403; direct digest correspondence pending",
+    "previous_5mb_extraction_limit_removed": true
   },
   "github": {
     "secrets_count": 0,
@@ -61,11 +61,11 @@
     "fork_contributor_approval_http_status": 422,
     "secret_scanning_alerts_http_status": 404,
     "secret_scanning_enabled": false,
-    "latest_ci_run": 41114841130,
+    "latest_ci_run": 41133919857,
     "latest_ci_conclusion": "success",
-    "latest_cd_run": 41115368500,
+    "latest_cd_run": 41134382990,
     "latest_cd_conclusion": "skipped",
-    "new_secret_gate_remote_verified": false
+    "new_secret_gate_remote_verified": true
   },
   "checks": {
     "actionlint": "passed",
@@ -78,7 +78,7 @@
   "findings": {
     "confirmed_exposed_real_secrets": 0,
     "high_unresolved_audit_coverage": [
-      "GHCR full package/version/visibility inventory unavailable"
+      "All nine artifact images inspected, but nine current GHCR tag-to-digest resolutions cannot be verified (HTTP 403)"
     ],
     "administrative_password_strength": "weak; not changed; isolated local database; plan rotation before EC2"
   },
@@ -87,5 +87,256 @@
   "no_history_rewrite": true,
   "no_aws_changes": true,
   "no_database_or_volume_deletion": true,
-  "conclusion": "NO APTO PARA HACER PÚBLICO"
+  "conclusion": "NO APTO PARA HACER PÚBLICO",
+  "final_ghcr_review": {
+    "date": "2026-10-30",
+    "commit": "c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+    "inventory_source": "Owner visual confirmation supplied in conversation; not independently queried",
+    "owner_confirmed_packages": [
+      "medinet-pab-api",
+      "medinet-pab-web",
+      "medinet-pab-db"
+    ],
+    "owner_confirmed_versions_per_package": 3,
+    "owner_confirmed_untagged_versions": 0,
+    "expected_images": 9,
+    "artifact_content_inspected": 9,
+    "existence_only_without_artifact_content": 0,
+    "current_ghcr_manifests_directly_verified": 0,
+    "images": [
+      {
+        "package": "medinet-pab-db",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "run_id": 41133919857,
+        "artifact_oci_manifest_digest_verified": "sha256:7757d8385bd21305e6fd7ae0e95a99b80fd1ba4ec52dd17915bc84b0cf4b58e3",
+        "config_digest_verified": "sha256:b7d754659839f52125bb22c8bcd1cf4cbea4fcae0c6c76cabbb0623a9bbda38a",
+        "push_digest_observed_in_actions_log": "sha256:880dbbf01bbc95333a63cda3806c21a66f00f685938df974b67561d4e4643dd0",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-api",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "run_id": 41133919857,
+        "artifact_oci_manifest_digest_verified": "sha256:5215de6e97f4ff2ae6378e56c0442472338628bcf70ae6c252f2b3067066b1f0",
+        "config_digest_verified": "sha256:e8d0b809de9fd2a3804db74a8f4f196d0fcb20bc1d65ff85b5f1b5d0458595c3",
+        "push_digest_observed_in_actions_log": "sha256:5d286f2e759a888a98fa98978522c745ea37b8a35d7397b4979de562be93db69",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 2,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-web",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "run_id": 41133919857,
+        "artifact_oci_manifest_digest_verified": "sha256:6b32cfd0c2d6895c18e3fd3f564f55e21100156fce1b1538435b080c8ff17dae",
+        "config_digest_verified": "sha256:5ab171a54394efb2e1dfb72296f0cc7ba9af858cfe75b85289ca242cb4cf688d",
+        "push_digest_observed_in_actions_log": "sha256:66311a789125e112237b3f95e112f732c2912ecb96b59a617455eb514fd1736b",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 11,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-api",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "run_id": 41114841130,
+        "artifact_oci_manifest_digest_verified": "sha256:6baff5a73d88cf98a48fb8bec0f83d7b26859bf6615b460c03e6efdcac5cdc89",
+        "config_digest_verified": "sha256:556379a38d4d87353cf8f4e5be3c1c56707c2e4d42f48618f976a4031d2cd8df",
+        "push_digest_observed_in_actions_log": "sha256:f690e35cb999f0812ebaf1cb8850ec2d314eb40f37ffff3313a8445424789af7",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 2,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-web",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "run_id": 41114841130,
+        "artifact_oci_manifest_digest_verified": "sha256:5cb32f071a671972bc7359ff1f4ae2107f7cc80e0858a8dca5c732a8a65001f6",
+        "config_digest_verified": "sha256:f5c68956a856073177b4ec731cd0c115ca77e65ccdb9d477b124be08cb041dc4",
+        "push_digest_observed_in_actions_log": "sha256:5107d394165c28ef1d9dcec2cc15dc2934de98bed954f53090d128d943245ce9",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 11,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-db",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "run_id": 41114841130,
+        "artifact_oci_manifest_digest_verified": "sha256:e5528eb2254633c2d3874ff8c0a3f7b8487e26ba923965c4d6c597845d37d0c0",
+        "config_digest_verified": "sha256:cb221fbd640f4030cc0084e944d6f0d663a7b028e281e81fd9441f203f0e750e",
+        "push_digest_observed_in_actions_log": "sha256:22a4ac3569f968b60f13431a3491ecb264c00ebb446a76ace0ccd5db412ba20f",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-api",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "run_id": 41089671930,
+        "artifact_oci_manifest_digest_verified": "sha256:d246aaa4d4e3e6d3d87134441c302c1e3a19e6cdecdf47ac1ceebb94537b2533",
+        "config_digest_verified": "sha256:e301521933e3bd130277a0f9f70a40d3bc4f79e01546da0d1919ece7448af52e",
+        "push_digest_observed_in_actions_log": "sha256:a838de72c5a232a80f61b189597c8185ef50e7f3ca6f7a64ce2028e43eaf49e0",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 2,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-web",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "run_id": 41089671930,
+        "artifact_oci_manifest_digest_verified": "sha256:7e981f6047b4e64ca1b4465fec3c72cdb4ecadb3801f0f6ed67852b51bc62f9b",
+        "config_digest_verified": "sha256:b976706ef6f6da189ffd3e0f2434df0ef91fb6d2d464c00d7b036090c383687e",
+        "push_digest_observed_in_actions_log": "sha256:2bfa1b91f38d0cd29be50fa6e889bfc86438f0dbfc062509918d72c581354c91",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 11,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      },
+      {
+        "package": "medinet-pab-db",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "run_id": 41089671930,
+        "artifact_oci_manifest_digest_verified": "sha256:de15421ead2e377056ed599984f09f61f46fcbefe27b648fc74b3c84ac3e6f70",
+        "config_digest_verified": "sha256:1a0a34847f805f30d93c77e0c464ba4258db53a9016ba86e783bb2fab64306fd",
+        "push_digest_observed_in_actions_log": "sha256:70c268f57700573d002e280729fefcb425c6c0471d364f8df759cb7778958ae4",
+        "registry_manifest_directly_verified": false,
+        "artifact_content_inspected": true,
+        "layers_count": 13,
+        "all_layer_diff_ids_verified": true,
+        "known_long_secret_matches": 0,
+        "gitleaks_config_alerts": 0,
+        "confirmed_real_secrets": 0,
+        "provenance": "Actions scanned-images checksum -> publish job load/tag/push; digest observed in job logs",
+        "current_registry_tag_digest_compared": false
+      }
+    ],
+    "direct_registry_attempts": [
+      {
+        "package": "claudiopioenfasis/medinet-pab-api",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-api",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-api",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-web",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-web",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-web",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-db",
+        "tag": "sha-c7a98b40ecbba2f23aaf5c1ef8c37ef039a4b1be",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-db",
+        "tag": "sha-5e45c59da77e38a7c551cbe24a90072293b2475b",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      },
+      {
+        "package": "claudiopioenfasis/medinet-pab-db",
+        "tag": "sha-add85a09a03fd0fa9f5410ea4e252e09540b3f67",
+        "manifest_http_status": 403,
+        "manifest_verified": false
+      }
+    ],
+    "bundle_checksums_verified": true,
+    "artifact_oci_manifest_config_and_layer_blob_hashes_verified": true,
+    "layer_references_verified": 111,
+    "unique_layers_extracted": 64,
+    "all_regular_files_extracted_without_5mb_limit": true,
+    "scanner": "Gitleaks 8.30.1 pinned digest; network disabled; full redaction; no added suppressions",
+    "scanner_exit_code": 1,
+    "scanner_alerts": 6,
+    "false_positives": 6,
+    "confirmed_real_secrets": 0,
+    "false_positive_types": [
+      "Public Python GPG verification fingerprint in API Env and build history"
+    ],
+    "sensitive_file_classification": [
+      "certifi cacert.pem is a public certificate bundle",
+      "PostgreSQL extension/system SQL files are installation scripts, not database dumps"
+    ],
+    "limitations": [
+      "HTTP 403 for all nine GHCR manifests with existing authorization; read:packages and package access needed for direct reading",
+      "Published manifest digests are observed in Actions logs, not compared with current GHCR tag resolution",
+      "Gitleaks text scanning is not binary forensic analysis; no proof of absence of deliberately hidden secrets"
+    ],
+    "required_next_step": "Owner compare all nine current registry digests against push_digest_observed_in_actions_log, or provide authorized package read access; no credential values needed",
+    "conclusion": "NO APTO PARA HACER PÚBLICO"
+  }
 }

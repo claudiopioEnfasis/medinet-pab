@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Respaldo privado; --verify restaura en un contenedor sin red ni volumen original.
 set -euo pipefail
+set +x
 umask 077
 stamp=$(date -u +%Y%m%dT%H%M%S%N)
 destination="backups/$stamp"

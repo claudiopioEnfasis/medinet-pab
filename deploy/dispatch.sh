@@ -17,4 +17,4 @@ printf '%s' "$registry_token" | docker --config "$auth" login ghcr.io -u "$regis
 unset registry_token
 export DOCKER_CONFIG="$auth"
 # No shell remoto arbitrario, copia de scripts ni modificación del directorio por la entrada SSH.
-bash "$root/bin/deploy.sh" "$sha" "$root"
+bash "$root/deploy/deploy.sh" "$sha" "$root"

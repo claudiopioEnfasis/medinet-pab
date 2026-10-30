@@ -168,10 +168,10 @@ Preparación por Matías:
    hospedados tienen IP dinámica, por lo que evaluar VPN/bastión/salida fija antes
    de habilitar entrega. No abrir SSH a todo Internet para resolverlo. No exponer
    5432, 8000 ni 3000. TLS mediante proxy en host a loopback:3000; 443 y, si aplica,
-   80 para redirección/ACME. Dominio, renovación y prueba HTTPS están pendientes.
-3. Preparar `/opt/medinet-pab` y copiar de forma revisada compose.prod.yaml como
-   compose.yaml. Instalar deploy/deploy.sh, deploy/dispatch.sh y scripts/backup.sh
-   como bin/deploy.sh, bin/dispatch.sh y bin/backup.sh, protegidos de escritura por
+   80 para redirección/ACME. El propietario informa que DuckDNS y HTTPS ya funcionan;
+   conservar el Nginx y certificados existentes. Esta preparación no los modifica.
+3. Preparar `/opt/medinet-pab` y copiar de forma revisada compose.prod.yaml con su nombre original. Conservar deploy/deploy.sh,
+   deploy/dispatch.sh y scripts/backup.sh en esas mismas rutas, protegidos de escritura por
    la cuenta SSH (propietario administrador). Esa cuenta tampoco debe poder
    sustituir los directorios padre, scripts o composición. Dar acceso solo al
    estado privado necesario y evaluar explícitamente su acceso al daemon Docker.
@@ -200,7 +200,7 @@ Preparación por Matías:
 6. En authorized_keys de la cuenta dedicada configurar la clave pública con:
 
    ```text
-   restrict,command="/opt/medinet-pab/bin/dispatch.sh" <clave-publica-dedicada>
+   restrict,command="/opt/medinet-pab/deploy/dispatch.sh" <clave-publica-dedicada>
    ```
 
    Verificar OpenSSH compatible, sin shell arbitrario, PTY ni forwarding. Validar
@@ -291,3 +291,14 @@ Fuentes oficiales: [extensión](https://github.com/github/vscode-github-actions)
 [Environments y planes](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments).
 Para la rúbrica, adjuntar ejecución del nuevo SHA, reportes de gates, GHCR por SHA
 y, solo cuando exista, evidencia de EC2 saludable y ensayo de recuperación.
+
+## 10. Continuación sobre EC2 existente
+
+Para la instalación ya operativa en https://medinet-pab.duckdns.org, seguir
+[ACTIVACION_CD_EC2.md](ACTIVACION_CD_EC2.md). El script usa exclusivamente
+compose.prod.yaml y scripts/backup.sh en el checkout del servidor. No copiar la
+composición a compose.yaml ni reinstalar/provisionar una base ya existente.
+El workflow separado verifica explícitamente publicación GHCR exitosa y salud
+HTTPS antes/después de SSH. Mantener ENABLE_EC2_DEPLOY y EC2_SECURITY_REVIEWED
+false o ausentes hasta aprobación explícita. Los estados históricos de esta guía
+no constituyen verificación actual de AWS.

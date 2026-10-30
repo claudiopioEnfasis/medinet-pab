@@ -50,20 +50,24 @@ jobs:
           [[ $REQUESTED_SHA =~ ^[0-9a-f]{40}$ ]]
           main_sha=$(gh api "repos/$REPOSITORY/commits/main" --jq '.sha')
           [[ $REQUESTED_SHA == "$main_sha" ]]
-          runs=$(gh api "repos/$REPOSITORY/actions/runs?head_sha=$REQUESTED_SHA&event=push&per_page=100" --jq '[.workflow_runs[] | select(.head_branch == "main" and .path == ".github/workflows/ci-cd.yml" and .name == "MediNet PAB - CI" and .conclusion == "success")] | length')
-          [[ $runs -gt 0 ]]
+          run_id=$(gh api "repos/$REPOSITORY/actions/runs?head_sha=$REQUESTED_SHA&event=push&per_page=100" --jq '[.workflow_runs[] | select(.head_branch == "main" and .path == ".github/workflows/ci-cd.yml" and .name == "MediNet PAB - CI" and .conclusion == "success")] | first | .id // empty')
+          [[ $run_id =~ ^[0-9]+$ ]]
+          published=$(gh api "repos/$REPOSITORY/actions/runs/$run_id/jobs?per_page=100" --jq '[.jobs[] | select(.name == "Publicar imágenes versionadas en GHCR" and .conclusion == "success")] | length')
+          [[ $published == 1 ]]
           echo "image_sha=$REQUESTED_SHA" >> "$GITHUB_OUTPUT"
 
   deploy:
     name: Deployment production (requiere aprobación)
     needs: resolve
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     environment: production
     permissions:
       contents: read
       packages: read
     steps:
+      - name: Readiness HTTPS antes de entregar
+        run: curl --fail --silent --show-error --retry 3 --retry-delay 2 --connect-timeout 10 --max-time 20 https://medinet-pab.duckdns.org/api/health/ready > /dev/null
       - name: Entrega SSH con host key fija y comando forzado
         env:
           IMAGE_SHA: ${{ needs.resolve.outputs.image_sha }}
@@ -87,3 +91,5 @@ jobs:
           printf '%s\n' "$SSH_KNOWN_HOSTS" > "$ssh_directory/known_hosts"
           printf '%s\n%s\n' "$GHCR_USER" "$GHCR_TOKEN" |
             ssh -i "$ssh_directory/key" -p "$EC2_PORT" -o BatchMode=yes -o IdentitiesOnly=yes -o ForwardAgent=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_directory/known_hosts" -o ConnectTimeout=15 "$EC2_USER@$EC2_HOST" "deploy $IMAGE_SHA"
+      - name: Readiness HTTPS después de entregar
+        run: curl --fail --silent --show-error --retry 5 --retry-delay 3 --connect-timeout 10 --max-time 20 https://medinet-pab.duckdns.org/api/health/ready > /dev/null
