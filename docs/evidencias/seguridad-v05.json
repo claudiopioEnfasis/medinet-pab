@@ -1,0 +1,909 @@
+{
+  "fecha": "2026-10-30",
+  "sast_bandit": "aprobado",
+  "npm_produccion": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "pip_audit": [
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4145",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "GHSA-ffc3-869f-jxw9",
+        "CVE-2026-102268"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4146",
+      "correcciones": [],
+      "aliases": [
+        "GHSA-gvp8-978c-rx2q",
+        "CVE-2026-103001"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4149",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102271",
+        "GHSA-p4g4-x82p-q773"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4152",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102274",
+        "GHSA-w6j9-cwv2-h6wq"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4144",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "GHSA-9v7f-9g4p-ffgj",
+        "CVE-2026-102267"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4143",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102266",
+        "GHSA-9j54-fg26-wv3r"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4148",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102270",
+        "GHSA-jwrc-g2q2-pq5p"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4140",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-101917",
+        "GHSA-2gx3-rcp4-g85q"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4141",
+      "correcciones": [
+        "2.15.0"
+      ],
+      "aliases": [
+        "CVE-2026-101918",
+        "GHSA-42vr-xj54-vc7v"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4147",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102269",
+        "GHSA-hxm8-2xgr-2p9m"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4151",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "GHSA-w2cx-738m-mc7w",
+        "CVE-2026-102273"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4150",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "GHSA-r6x4-923q-g947",
+        "CVE-2026-102272"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4142",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": [
+        "CVE-2026-102265",
+        "GHSA-8wjv-2p76-3863"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "PYSEC-2026-4183",
+      "correcciones": [
+        "2.15.0"
+      ],
+      "aliases": [
+        "GHSA-x33g-cr3x-6449",
+        "CVE-2026-102275"
+      ]
+    },
+    {
+      "paquete": "pyjwt",
+      "version": "2.13.0",
+      "id": "GHSA-pxh4-856f-4h89",
+      "correcciones": [
+        "2.14.0"
+      ],
+      "aliases": []
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1795",
+      "correcciones": [
+        "25.3"
+      ],
+      "aliases": [
+        "CVE-2025-8869",
+        "GHSA-4xh5-x5gv-qwph"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1796",
+      "correcciones": [
+        "26.0"
+      ],
+      "aliases": [
+        "GHSA-6vgw-5pg2-w6jp",
+        "CVE-2026-1703"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2875",
+      "correcciones": [
+        "26.1"
+      ],
+      "aliases": [
+        "GHSA-58qw-9mgm-455v",
+        "CVE-2026-3219"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2876",
+      "correcciones": [
+        "26.1"
+      ],
+      "aliases": [
+        "CVE-2026-6357",
+        "GHSA-jp4c-xjxw-mgf9"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-196",
+      "correcciones": [
+        "26.1.2"
+      ],
+      "aliases": [
+        "GHSA-wf93-45jw-7689",
+        "CVE-2026-8643"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1795",
+      "correcciones": [
+        "25.3"
+      ],
+      "aliases": [
+        "CVE-2025-8869",
+        "GHSA-4xh5-x5gv-qwph"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-1796",
+      "correcciones": [
+        "26.0"
+      ],
+      "aliases": [
+        "GHSA-6vgw-5pg2-w6jp",
+        "CVE-2026-1703"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-196",
+      "correcciones": [
+        "26.1.2"
+      ],
+      "aliases": [
+        "GHSA-wf93-45jw-7689",
+        "CVE-2026-8643"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2875",
+      "correcciones": [
+        "26.1"
+      ],
+      "aliases": [
+        "GHSA-58qw-9mgm-455v",
+        "CVE-2026-3219"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-2876",
+      "correcciones": [
+        "26.1"
+      ],
+      "aliases": [
+        "CVE-2026-6357",
+        "GHSA-jp4c-xjxw-mgf9"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-3721",
+      "correcciones": [
+        "26.2"
+      ],
+      "aliases": [
+        "CVE-2026-13346",
+        "GHSA-qwm4-qh6w-59xr"
+      ]
+    },
+    {
+      "paquete": "pip",
+      "version": "25.0.1",
+      "id": "PYSEC-2026-3721",
+      "correcciones": [
+        "26.2.0"
+      ],
+      "aliases": [
+        "CVE-2026-13346",
+        "GHSA-qwm4-qh6w-59xr"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-161",
+      "correcciones": [
+        "1.0.1"
+      ],
+      "aliases": [
+        "CVE-2026-48710",
+        "X41-2026-002",
+        "GHSA-86qp-5c8j-p5mr"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-161",
+      "correcciones": [
+        "1.0.1"
+      ],
+      "aliases": [
+        "X41-2026-002",
+        "CVE-2026-48710",
+        "GHSA-86qp-5c8j-p5mr"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2281",
+      "correcciones": [
+        "1.1.0"
+      ],
+      "aliases": [
+        "GHSA-wqp7-x3pw-xc5r",
+        "CVE-2026-48818"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2280",
+      "correcciones": [
+        "1.1.0"
+      ],
+      "aliases": [
+        "GHSA-x746-7m8f-x49c",
+        "CVE-2026-48817"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-249",
+      "correcciones": [
+        "1.3.1"
+      ],
+      "aliases": [
+        "GHSA-82w8-qh3p-5jfq",
+        "CVE-2026-54283"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-248",
+      "correcciones": [
+        "1.3.0"
+      ],
+      "aliases": [
+        "GHSA-jp82-jpqv-5vv3",
+        "CVE-2026-54282"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-249",
+      "correcciones": [
+        "1.3.1"
+      ],
+      "aliases": [
+        "GHSA-82w8-qh3p-5jfq",
+        "CVE-2026-54283"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-248",
+      "correcciones": [
+        "1.3.0"
+      ],
+      "aliases": [
+        "GHSA-jp82-jpqv-5vv3",
+        "CVE-2026-54282"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2281",
+      "correcciones": [
+        "1.1.0"
+      ],
+      "aliases": [
+        "GHSA-wqp7-x3pw-xc5r",
+        "CVE-2026-48818"
+      ]
+    },
+    {
+      "paquete": "starlette",
+      "version": "0.50.0",
+      "id": "PYSEC-2026-2280",
+      "correcciones": [
+        "1.1.0"
+      ],
+      "aliases": [
+        "GHSA-x746-7m8f-x49c",
+        "CVE-2026-48817"
+      ]
+    }
+  ],
+  "trivy": {
+    "api": [
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102268",
+        "severidad": "CRITICAL",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102268"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102266",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102266"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102267",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102267"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102271",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102271"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102272",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102272"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "CVE-2026-102273",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-102273"
+      },
+      {
+        "paquete": "PyJWT",
+        "version": "2.13.0",
+        "id": "GHSA-pxh4-856f-4h89",
+        "severidad": "HIGH",
+        "correccion": "2.14.0",
+        "fuente": "https://github.com/advisories/GHSA-pxh4-856f-4h89"
+      },
+      {
+        "paquete": "starlette",
+        "version": "0.50.0",
+        "id": "CVE-2026-48818",
+        "severidad": "HIGH",
+        "correccion": "1.1.0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-48818"
+      },
+      {
+        "paquete": "starlette",
+        "version": "0.50.0",
+        "id": "CVE-2026-54283",
+        "severidad": "HIGH",
+        "correccion": "1.3.1",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-54283"
+      }
+    ],
+    "web": [
+      {
+        "paquete": "brotli-libs",
+        "version": "1.2.0-r0",
+        "id": "CVE-2026-111497",
+        "severidad": "CRITICAL",
+        "correccion": "1.2.1-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-111497"
+      },
+      {
+        "paquete": "c-ares",
+        "version": "1.34.6-r0",
+        "id": "CVE-2026-33630",
+        "severidad": "HIGH",
+        "correccion": "1.34.8-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-33630"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-11352",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-11352"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-11586",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-11586"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-12064",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-12064"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-5773",
+        "severidad": "HIGH",
+        "correccion": "8.20.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-5773"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-6276",
+        "severidad": "HIGH",
+        "correccion": "8.20.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-6276"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8286",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8286"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8458",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8458"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8925",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8925"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8927",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8927"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-92392",
+        "severidad": "HIGH",
+        "correccion": "8.23.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-92392"
+      },
+      {
+        "paquete": "curl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-9547",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-9547"
+      },
+      {
+        "paquete": "libcrypto3",
+        "version": "3.5.6-r0",
+        "id": "CVE-2026-14456",
+        "severidad": "HIGH",
+        "correccion": "3.5.8-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-14456"
+      },
+      {
+        "paquete": "libcrypto3",
+        "version": "3.5.6-r0",
+        "id": "CVE-2026-45447",
+        "severidad": "HIGH",
+        "correccion": "3.5.7-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-45447"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-11352",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-11352"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-11586",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-11586"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-12064",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-12064"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-5773",
+        "severidad": "HIGH",
+        "correccion": "8.20.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-5773"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-6276",
+        "severidad": "HIGH",
+        "correccion": "8.20.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-6276"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8286",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8286"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8458",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8458"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8925",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8925"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-8927",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-8927"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-92392",
+        "severidad": "HIGH",
+        "correccion": "8.23.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-92392"
+      },
+      {
+        "paquete": "libcurl",
+        "version": "8.17.0-r1",
+        "id": "CVE-2026-9547",
+        "severidad": "HIGH",
+        "correccion": "8.22.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-9547"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-45186",
+        "severidad": "HIGH",
+        "correccion": "2.8.1-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-45186"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-66046",
+        "severidad": "HIGH",
+        "correccion": "2.8.4-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-66046"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-76641",
+        "severidad": "HIGH",
+        "correccion": "2.8.4-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-76641"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-76956",
+        "severidad": "HIGH",
+        "correccion": "2.8.4-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-76956"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-76957",
+        "severidad": "HIGH",
+        "correccion": "2.8.4-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-76957"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-77214",
+        "severidad": "HIGH",
+        "correccion": "2.9.0-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-77214"
+      },
+      {
+        "paquete": "libexpat",
+        "version": "2.7.5-r0",
+        "id": "CVE-2026-93990",
+        "severidad": "HIGH",
+        "correccion": "2.8.5-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-93990"
+      },
+      {
+        "paquete": "libssl3",
+        "version": "3.5.6-r0",
+        "id": "CVE-2026-14456",
+        "severidad": "HIGH",
+        "correccion": "3.5.8-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-14456"
+      },
+      {
+        "paquete": "libssl3",
+        "version": "3.5.6-r0",
+        "id": "CVE-2026-45447",
+        "severidad": "HIGH",
+        "correccion": "3.5.7-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-45447"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-53612",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-53612"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-53613",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-53613"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-53614",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-53614"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-76642",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-76642"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-78408",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r1",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-78408"
+      },
+      {
+        "paquete": "libuuid",
+        "version": "2.41.4-r0",
+        "id": "CVE-2026-78410",
+        "severidad": "HIGH",
+        "correccion": "2.41.6-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-78410"
+      },
+      {
+        "paquete": "libxml2",
+        "version": "2.13.9-r0",
+        "id": "CVE-2026-6732",
+        "severidad": "HIGH",
+        "correccion": "2.13.9-r1",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-6732"
+      },
+      {
+        "paquete": "pcre2",
+        "version": "10.47-r0",
+        "id": "CVE-2026-103111",
+        "severidad": "HIGH",
+        "correccion": "10.49-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-103111"
+      },
+      {
+        "paquete": "pcre2",
+        "version": "10.47-r0",
+        "id": "CVE-2026-86145",
+        "severidad": "HIGH",
+        "correccion": "10.48-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-86145"
+      },
+      {
+        "paquete": "pcre2",
+        "version": "10.47-r0",
+        "id": "CVE-2026-89157",
+        "severidad": "HIGH",
+        "correccion": "10.48-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-89157"
+      },
+      {
+        "paquete": "pcre2",
+        "version": "10.47-r0",
+        "id": "CVE-2026-89161",
+        "severidad": "HIGH",
+        "correccion": "10.48-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-89161"
+      },
+      {
+        "paquete": "tiff",
+        "version": "4.7.1-r0",
+        "id": "CVE-2026-4775",
+        "severidad": "HIGH",
+        "correccion": "4.7.2-r0",
+        "fuente": "https://avd.aquasec.com/nvd/cve-2026-4775"
+      }
+    ]
+  }
+}

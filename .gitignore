@@ -1,0 +1,33 @@
+# Nunca subir archivos locales con contraseñas
+.env
+.env.*
+!.env.example
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+credentials*.json
+*.dump
+*.backup
+*.sql.gz
+globals*.sql
+/backups/
+/respaldos*/
+
+# Python y bases de prueba
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.sqlite3
+local_dev.db
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Archivos locales
+.DS_Store
+Thumbs.db
+.vscode/

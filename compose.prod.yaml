@@ -1,0 +1,59 @@
+# Composición preparada para v1.0 en EC2 con runner autoalojado.
+# Nginx público con TLS se configurará en v1.0. Por ahora solo loopback.
+name: medinet-pab
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configura .env en el servidor}
+      POSTGRES_DB: ${POSTGRES_DB:?Configura .env en el servidor}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [private_db]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+  api:
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-api:${IMAGE_TAG:?Define IMAGE_TAG}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    environment:
+      DB_HOST: db
+      POSTGRES_USER: ${POSTGRES_USER:?Configura .env en el servidor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configura .env en el servidor}
+      POSTGRES_DB: ${POSTGRES_DB:?Configura .env en el servidor}
+      JWT_SECRET: ${JWT_SECRET:?Configura .env en el servidor}
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    depends_on:
+      db: {condition: service_healthy}
+    networks: [private_db, front]
+  web:
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX}-web:${IMAGE_TAG:?Define IMAGE_TAG}
+    restart: unless-stopped
+    ports: ["127.0.0.1:3000:8080"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+    depends_on:
+      api: {condition: service_healthy}
+    networks: [front]
+networks:
+  private_db: {internal: true}
+  front: {}
+volumes:
+  postgres_data: {}
