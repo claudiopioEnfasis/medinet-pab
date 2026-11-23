@@ -55,10 +55,13 @@ jobs:
         run: |
           set -euo pipefail
           base="https://releases.hashicorp.com/terraform/${TF_VERSION}"
-          curl -fsSL -o terraform.zip "${base}/terraform_${TF_VERSION}_linux_amd64.zip"
+          asset="terraform_${TF_VERSION}_linux_amd64.zip"
+          curl -fsSL -o "${asset}" "${base}/${asset}"
           curl -fsSL -o SHA256SUMS "${base}/terraform_${TF_VERSION}_SHA256SUMS"
-          grep "terraform_${TF_VERSION}_linux_amd64.zip$" SHA256SUMS | sha256sum -c -
-          sudo unzip -o -q terraform.zip -d /usr/local/bin
+          # sha256sum -c valida el nombre de archivo listado en SHA256SUMS:
+          # el zip debe conservar el nombre canonico del release.
+          grep " ${asset}$" SHA256SUMS | sha256sum -c -
+          sudo unzip -o -q "${asset}" -d /usr/local/bin
           terraform version
 
       - name: terraform fmt -check
