@@ -1,0 +1,67 @@
+# EVA 03 - Despliegue Multi-AZ.
+# La base ya NO es un contenedor local: los dos nodos usan la misma instancia
+# Amazon RDS privada (DB_HOST llega por variable desde Terraform).
+# Puertos publicados 8080/8000: el Security Group de los nodos solo acepta
+# tráfico desde el Security Group del ALB, nunca desde Internet.
+name: medinet-pab-aws
+
+services:
+  api:
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX en .env}-api:${IMAGE_TAG:?Define IMAGE_TAG en .env}
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: ${DB_HOST:?Define DB_HOST en .env}
+      POSTGRES_DB: ${POSTGRES_DB:?Define POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Define POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+      JWT_SECRET: ${JWT_SECRET:?Define JWT_SECRET en .env}
+      API_ROOT_PATH: /api
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  web:
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX en .env}-web:${IMAGE_TAG:?Define IMAGE_TAG en .env}
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Perfil transitorio: aplica migraciones una sola vez por despliegue.
+  migrate:
+    profiles: [maintenance]
+    image: ${IMAGE_PREFIX:?Define IMAGE_PREFIX en .env}-api:${IMAGE_TAG:?Define IMAGE_TAG en .env}
+    environment:
+      DB_HOST: ${DB_HOST:?Define DB_HOST en .env}
+      POSTGRES_DB: ${POSTGRES_DB:?Define POSTGRES_DB en .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Define POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+    command: [python, -m, scripts.migrate]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]

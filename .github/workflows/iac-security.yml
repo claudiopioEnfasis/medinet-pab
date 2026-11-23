@@ -1,0 +1,149 @@
+name: MediNet PAB - IaC Security
+
+# Criterio 1 EVA 03: analisis estatico de la infraestructura como codigo.
+# No usa credenciales de AWS: terraform se inicializa con -backend=false y
+# Checkov/tfsec trabajan solo sobre el codigo fuente de terraform/.
+# Permisos: contents:read es lo unico necesario; el SARIF se publica como
+# artefacto. Subirlo a la pestana Security exigiria security-events:write y
+# GitHub Advanced Security, que no se habilita aqui a proposito.
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "terraform/**"
+      - ".github/workflows/iac-security.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "terraform/**"
+      - ".github/workflows/iac-security.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: medinet-iac-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  TF_VERSION: "1.9.8"
+  TFSEC_VERSION: "1.28.13"
+  # SHA256 de tfsec_1.28.13_linux_amd64.tar.gz publicado por aquasecurity.
+  TFSEC_SHA256: "f643c390e6eabdf4bd64e807ff63abfe977d4f027c0b535eefe7a5c9f391fc28"
+  CHECKOV_VERSION: "3.4.6"
+  TF_IN_AUTOMATION: "1"
+  TF_INPUT: "0"
+  CHECKPOINT_DISABLE: "1"
+
+jobs:
+  terraform-validate:
+    name: Terraform fmt + validate (sin credenciales)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Instalar Terraform con checksum verificado
+        run: |
+          set -euo pipefail
+          base="https://releases.hashicorp.com/terraform/${TF_VERSION}"
+          curl -fsSL -o terraform.zip "${base}/terraform_${TF_VERSION}_linux_amd64.zip"
+          curl -fsSL -o SHA256SUMS "${base}/terraform_${TF_VERSION}_SHA256SUMS"
+          grep "terraform_${TF_VERSION}_linux_amd64.zip$" SHA256SUMS | sha256sum -c -
+          sudo unzip -o -q terraform.zip -d /usr/local/bin
+          terraform version
+
+      - name: terraform fmt -check
+        working-directory: terraform
+        run: terraform fmt -check -recursive -diff
+
+      - name: terraform init sin backend ni credenciales
+        working-directory: terraform
+        run: terraform init -backend=false -input=false -no-color
+
+      - name: terraform validate
+        working-directory: terraform
+        run: terraform validate -no-color
+
+  checkov:
+    name: Checkov (gate HIGH, SARIF)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Checkov fijado
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip==26.2.2
+          python -m pip install "checkov==${CHECKOV_VERSION}"
+          checkov --version
+
+      - name: Checkov sobre terraform/
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          checkov --directory terraform --framework terraform \
+            --output cli --output sarif \
+            --output-file-path console,reports/checkov-terraform.sarif \
+            --hard-fail-on HIGH --compact
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: checkov-sarif
+          path: reports/checkov-terraform.sarif
+          if-no-files-found: warn
+          retention-days: 14
+
+  tfsec:
+    name: tfsec (gate HIGH/CRITICAL)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Instalar tfsec con checksum verificado
+        run: |
+          set -euo pipefail
+          url="https://github.com/aquasecurity/tfsec/releases/download/v${TFSEC_VERSION}/tfsec_${TFSEC_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL -o tfsec.tar.gz "$url"
+          echo "${TFSEC_SHA256}  tfsec.tar.gz" | sha256sum -c -
+          tar -xzf tfsec.tar.gz tfsec
+          sudo install -m 0755 tfsec /usr/local/bin/tfsec
+          tfsec --version
+
+      - name: tfsec con gate en HIGH
+        run: |
+          tfsec terraform --minimum-severity HIGH --no-color --exclude-downloaded-modules
+
+      - name: Informe JSON para evidencia
+        if: always()
+        run: |
+          mkdir -p reports
+          tfsec terraform --minimum-severity HIGH --format json \
+            --out reports/tfsec.json --soft-fail --no-color --exclude-downloaded-modules
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: tfsec-json
+          path: reports/tfsec.json
+          if-no-files-found: warn
+          retention-days: 14

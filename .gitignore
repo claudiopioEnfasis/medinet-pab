@@ -56,6 +56,10 @@ id_ecdsa*
 *.sqlite
 *.tfstate
 *.tfstate.*
+.terraform/
+.terraform.tfstate.lock.info
+crash.log
+*.tfplan
 *.log
 
 # Conservar únicamente la plantilla revisada sin valores secretos

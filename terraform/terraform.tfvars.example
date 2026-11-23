@@ -1,0 +1,32 @@
+# Copiar a terraform.tfvars (ignorado por Git) y completar los valores.
+# Nunca confirmar este archivo con datos reales en el repositorio.
+
+aws_region  = "us-east-1"
+project     = "medinet-pab"
+environment = "eval03"
+
+# FQDN gratuito que apuntara por CNAME al ALB (ver docs/EVA03_PLAN.md).
+domain_name     = "medinet.ejemplo.dedyn.io"
+certificate_arn = "arn:aws:acm:us-east-1:000000000000:certificate/00000000-0000-0000-0000-000000000000"
+
+# Imagenes publicadas por el pipeline de CI en GHCR.
+image_prefix = "ghcr.io/claudiopioenfasis/medinet-pab"
+image_tag    = "sha-0000000000000000000000000000000000000000"
+
+# Opcional: si el repositorio o las imagenes son privadas.
+repo_url   = "https://github.com/claudiopioEnfasis/medinet-pab.git"
+repo_branch = "main"
+# ghcr_user  = "usuario"
+# ghcr_token = "ghp_..."   # preferir TF_VAR_ghcr_token
+
+# Opcional: forzar una AMI concreta del laboratorio.
+# ami_id = "ami-0123456789abcdef0"
+
+# Base de datos
+db_instance_class      = "db.t3.micro"
+db_multi_az            = true
+db_backup_retention_days = 7
+
+# Para poder destruir el laboratorio: desactivar protecciones.
+alb_deletion_protection = false
+db_deletion_protection  = false
