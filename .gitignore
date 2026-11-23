@@ -58,6 +58,7 @@ id_ecdsa*
 *.tfstate.*
 .terraform/
 .terraform.tfstate.lock.info
+/terraform/terraform.tfvars
 crash.log
 *.tfplan
 *.log
