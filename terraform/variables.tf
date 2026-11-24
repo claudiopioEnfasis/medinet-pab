@@ -71,7 +71,7 @@ variable "domain_name" {
 }
 
 variable "certificate_arn" {
-  description = "ARN del certificado ACM ya emitido y validado para domain_name (ver scripts/crear_certificado_acm.sh)."
+  description = "ARN del certificado ACM ya emitido y validado para domain_name (ver terraform/acm/README.md)."
   type        = string
 }
 

@@ -187,15 +187,12 @@ puede crearse cuando el ALB ya existe y Terraform publica su `dns_name`.
 
 ### Paso 1 — Certificado ACM
 
-1. Solicitar el certificado en **Amazon Certificate Manager en la misma región del ALB**
-   (`var.aws_region`, por defecto `us-east-1`); un certificado de otra región no puede asociarse al
-   listener.
+1. Solicitar el certificado por Terraform siguiendo [la guía de ACM](../terraform/acm/README.md).
+   Esta etapa fija `us-east-1`; el ALB debe estar en esa misma región.
 2. Elegir validación **DNS** y crear en el proveedor DNS del FQDN el registro CNAME de validación que
    ACM entrega (el laboratorio no tiene Route 53; ver sección 5).
 3. Esperar el estado `ISSUED` y copiar el ARN. Ese ARN se entrega como `certificate_arn`
    (variable obligatoria, sin valor por defecto).
-4. `terraform/terraform.tfvars.example` referencia este paso; la descripción de la variable apunta a
-   `scripts/crear_certificado_acm.sh`, archivo que **no está en el repositorio** (ver sección 6).
 
 ### Paso 2 — `terraform apply`
 
@@ -313,7 +310,7 @@ Todas las supresiones están referenciadas desde el propio código con la ruta `
 | Restricciones de S3/bucket policy | Sin *access logs* del ALB (supresiones CKV_AWS_91 y CKV_AWS_92). | `terraform/alb.tf` |
 | Presupuesto del laboratorio | Sin Performance Insights (CKV_AWS_353); RDS en `db.t3.micro` y EC2 en `t3.micro`. | `terraform/database.tf`, `terraform/variables.tf` |
 | Un único NAT Gateway (en `aws_subnet.public[0]`) | El egreso de las 2 subredes privadas depende de una sola AZ. Es una decisión de costo del laboratorio, no de la pauta: en producción se despliega un NAT por AZ. | `terraform/network.tf` |
-| Sin automatización de la emisión del certificado | `variables.tf` cita `scripts/crear_certificado_acm.sh`, que no existe en `scripts/`; el ARN se entrega manualmente por `certificate_arn`. | Sección 6 |
+| Validación DNS externa | Terraform solicita el certificado; la publicación del CNAME en deSEC y la comprobación de `ISSUED` son pasos separados. El stack principal recibe el ARN en `certificate_arn`. | [Flujo ACM](../terraform/acm/README.md) |
 
 ---
 
@@ -371,6 +368,6 @@ columna "Evidencia" se considera obtenido hasta que exista el archivo o la captu
 
 | Brecha | Detalle |
 |---|---|
-| `scripts/crear_certificado_acm.sh` | Citado en la descripción de `var.certificate_arn` (`terraform/variables.tf`) pero ausente en `scripts/`. Mientras no exista, el ARN del certificado se obtiene por consola de ACM y se entrega como variable. |
+| Emisión ACM en el laboratorio | La etapa `terraform/acm/` está definida, pero falta ejecutarla con credenciales del laboratorio y un FQDN controlado. |
 | `docs/` sin informe EVA 03 | Este documento es el plan técnico; el informe con STRIDE y normativa todavía no está en `docs/`. |
 | `EVIDENCIAS/criterio1/` | Directorio de evidencias del criterio 1 fuera del repositorio; debe poblarse con los artefactos del run en verde. |

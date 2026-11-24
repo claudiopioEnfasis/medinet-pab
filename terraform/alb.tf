@@ -85,6 +85,9 @@ resource "aws_lb_listener" "https" {
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = var.certificate_arn
 
+  # El listener TLS cubre las respuestas del frontend y las rutas directas de la API.
+  routing_http_response_strict_transport_security_header_value = "max-age=31536000"
+
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.frontend.arn

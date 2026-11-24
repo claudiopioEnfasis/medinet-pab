@@ -76,6 +76,12 @@ jobs:
         working-directory: terraform
         run: terraform validate -no-color
 
+      - name: Validar etapa ACM sin backend ni credenciales
+        working-directory: terraform/acm
+        run: |
+          terraform init -backend=false -input=false -lockfile=readonly -no-color
+          terraform validate -no-color
+
   checkov:
     name: Checkov (gate HIGH, SARIF)
     runs-on: ubuntu-24.04
