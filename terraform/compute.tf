@@ -66,8 +66,10 @@ resource "aws_launch_template" "app" {
     image_tag      = var.image_tag
     db_host        = aws_db_instance.main.address
     db_name        = var.db_name
-    db_user        = var.db_username
-    db_password    = random_password.db.result
+    db_user        = ""
+    db_password    = ""
+    aws_region     = var.aws_region
+    runtime_param  = var.runtime_db_password_parameter
     jwt_secret     = local.jwt_secret
     ghcr_user      = var.ghcr_user
     ghcr_token     = var.ghcr_token
@@ -116,6 +118,8 @@ resource "aws_instance" "app" {
     db_name        = var.db_name
     db_user        = var.db_username
     db_password    = random_password.db.result
+    aws_region     = var.aws_region
+    runtime_param  = var.runtime_db_password_parameter
     jwt_secret     = local.jwt_secret
     ghcr_user      = var.ghcr_user
     ghcr_token     = var.ghcr_token

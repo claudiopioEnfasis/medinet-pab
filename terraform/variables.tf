@@ -185,6 +185,17 @@ variable "db_username" {
   default     = "medinet_admin"
 }
 
+variable "runtime_db_password_parameter" {
+  description = "Nombre del SecureString preexistente para medinet_runtime. No contiene su valor."
+  type        = string
+  default     = "/medinet-pab/eval03/runtime-db-password"
+
+  validation {
+    condition     = can(regex("^(/[A-Za-z0-9_.-]+)+$", var.runtime_db_password_parameter))
+    error_message = "Indica una ruta absoluta de Parameter Store sin espacios."
+  }
+}
+
 variable "db_instance_class" {
   description = "Clase de la instancia RDS."
   type        = string

@@ -1,5 +1,13 @@
 # Terraform — MediNet PAB Multi-AZ (EVA 03)
 
+## Credenciales de arranque para Agenda/PAB
+
+Antes de aprovisionar, debe existir un `SecureString` en `us-east-1` con la contraseña de `medinet_runtime`. Indica su nombre en `runtime_db_password_parameter` (por defecto, `/medinet-pab/eval03/runtime-db-password`). Usa una contraseña aleatoria de 48 a 128 caracteres ASCII alfanuméricos, `_` o `-`. `LabInstanceProfile` debe poder leer y descifrar ese parámetro específico. Terraform no lee su valor.
+
+El primer nodo usa la cuenta administrativa para aplicar Alembic y aprovisionar o reaplicar los permisos de `medinet_runtime`. La API de ambos nodos usa el rol restringido. En una base existente, el valor del parámetro debe coincidir con la contraseña del rol: el arranque no la rota. Usa una imagen que incluya la revisión `0002` y el script `db_privileges`.
+
+La contraseña administrativa aún se renderiza en el arranque del primer nodo, y el secreto JWT en ambos. Protege el estado y restringe la lectura de `user_data`. **No apliques un plan sobre los nodos existentes sin revisar los reemplazos**: el primer nodo tiene `user_data_replace_on_change` activado.
+
 Infraestructura como código de la arquitectura Multi-AZ: VPC y subredes en 2 Zonas de
 Disponibilidad, IGW/NAT, Security Groups encadenados, ALB con TLS (ACM), 2 nodos EC2 privados y
 Amazon RDS PostgreSQL Multi-AZ. El detalle de diseño, las supresiones de Checkov/tfsec y las
