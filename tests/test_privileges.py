@@ -73,6 +73,10 @@ def test_migrations_and_runtime_least_privilege(monkeypatch):
             "UPDATE app_users SET password_hash='forbidden' WHERE id=-1",
             "INSERT INTO app_users DEFAULT VALUES",
             "UPDATE alembic_version SET version_num='forbidden'",
+            "SELECT * FROM audit_events",
+            "UPDATE audit_events SET action='surgery.scheduled'",
+            "DELETE FROM audit_events",
+            "TRUNCATE audit_events",
         ):
             with pytest.raises(DBAPIError) as caught:
                 with runtime.begin() as conn:
@@ -100,6 +104,9 @@ def test_migrations_and_runtime_least_privilege(monkeypatch):
                 assert client.patch(f"/surgeries/{sid}/status", json={"status": status}).status_code == 200
             assert client.get("/surgeries").status_code == 200
             assert client.post("/auth/login", json={"username": "runtime_test", "password": "wrong"}).status_code == 401
+        with admin.connect() as conn:
+            events = conn.execute(text("SELECT surgery_id, action FROM audit_events ORDER BY id")).all()
+            assert events == [(sid, "surgery.scheduled"), (sid, "surgery.status_changed"), (sid, "surgery.status_changed")]
         command("-m", "scripts.migrate")
         command("-m", "alembic", "check")
     finally:

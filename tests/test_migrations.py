@@ -14,7 +14,7 @@ def test_v03_baseline_preserves_existing_data(tmp_path):
     file = tmp_path / "legacy-v03.sqlite3"
     url = f"sqlite:///{file}"
     engine = create_engine(url)
-    Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine, tables=[t for t in Base.metadata.sorted_tables if t.name != "audit_events"])
     with engine.begin() as conn:
         conn.execute(text("INSERT INTO operating_rooms (id,code,name,status) VALUES (17,'PAB-17','Sala anterior','available')"))
     engine.dispose()
@@ -26,7 +26,8 @@ def test_v03_baseline_preserves_existing_data(tmp_path):
     engine = create_engine(url)
     with engine.connect() as conn:
         assert conn.execute(text("SELECT code FROM operating_rooms WHERE id=17")).scalar() == "PAB-17"
-        assert conn.execute(text("SELECT version_num FROM alembic_version")).scalar() == "0001"
+        assert conn.execute(text("SELECT version_num FROM alembic_version")).scalar() == "0002"
+        assert conn.execute(text("SELECT count(*) FROM audit_events")).scalar() == 0
     engine.dispose()
 
 
@@ -39,5 +40,5 @@ def test_fresh_migration_builds_initial_schema(tmp_path):
                    capture_output=True, text=True, timeout=30, check=True)
     engine = create_engine(url)
     with engine.connect() as conn:
-        assert conn.execute(text("SELECT version_num FROM alembic_version")).scalar() == "0001"
+        assert conn.execute(text("SELECT version_num FROM alembic_version")).scalar() == "0002"
     engine.dispose()

@@ -1,6 +1,6 @@
 """Migración segura desde v0.3 sin destruir ni recrear los registros existentes.
 
-- BD vacía: aplicar revision 0001.
+- BD vacía: aplicar todas las revisiones.
 - BD v0.3 con TODAS sus tablas esperadas, sin alembic_version: validar columnas
   y estampar 0001, sin ejecutar DDL sobre datos existentes.
 - Esquema parcial o incompatible: detener y pedir revisión manual.
@@ -17,11 +17,12 @@ def migrate():
     cfg = Config(str(Path(__file__).resolve().parents[1] / "alembic.ini"))
     inspector = inspect(engine)
     tables = set(inspector.get_table_names())
-    expected = set(Base.metadata.tables)
+    expected = set(Base.metadata.tables) - {"audit_events"}
     if "alembic_version" not in tables and (expected & tables):
-        if not expected.issubset(tables):
+        if not expected.issubset(tables) or "audit_events" in tables:
             raise RuntimeError("Esquema v0.3 incompleto: migración automática bloqueada; restaura respaldo")
-        for name, table in Base.metadata.tables.items():
+        for name in sorted(expected):
+            table = Base.metadata.tables[name]
             actual_cols = {col["name"] for col in inspector.get_columns(name)}
             required_cols = {col.name for col in table.columns}
             if not required_cols.issubset(actual_cols):

@@ -11,7 +11,7 @@ from pydantic import ValidationError
 
 from .db import get_db
 from .locking import lock_keys
-from .models import AppUser, MedicalStaff, OperatingRoom, Patient, Surgery
+from .models import AppUser, MedicalStaff, OperatingRoom, Patient, Surgery, audit_events
 from .schemas import (
     AvailabilityOut, Interval, MedicalStaffCreate, MedicalStaffOut, PatientCreate,
     PatientOut, RoomCreate, RoomOut, RoomStatus, RoomStatusUpdate, SurgeryCreate,
@@ -225,9 +225,9 @@ def check_availability(
 
 
 @app.post("/surgeries", response_model=SurgeryOut, status_code=201, tags=["Cirugías"],
-          responses={409: {"description": "Conflicto de quirófano, médico o paciente"}},
-          dependencies=[Depends(require_roles("admin", "coordinator"))])
-def schedule_surgery(payload: SurgeryCreate, db: Session = Depends(get_db)):
+          responses={409: {"description": "Conflicto de quirófano, médico o paciente"}})
+def schedule_surgery(payload: SurgeryCreate, db: Session = Depends(get_db),
+                     actor: AppUser = Depends(require_roles("admin", "coordinator"))):
     _advisory_locks(db, payload.room_id, payload.patient_id, payload.staff_ids)
     room = _get_or_404(db, OperatingRoom, payload.room_id, "quirófano")
     patient = _get_or_404(db, Patient, payload.patient_id, "paciente")
@@ -248,13 +248,18 @@ def schedule_surgery(payload: SurgeryCreate, db: Session = Depends(get_db)):
         procedure=payload.procedure, urgency=payload.urgency.value,
     )
     db.add(surgery)
+    db.flush()
+    db.execute(audit_events.insert().inline().values(
+        actor_id=actor.id, surgery_id=surgery.id, action="surgery.scheduled",
+    ))
     db.commit()
     db.refresh(surgery)
     return _surgery_response(surgery)
 
 
-@app.patch("/surgeries/{surgery_id}/status", response_model=SurgeryOut, tags=["Cirugías"], dependencies=[Depends(require_roles("admin", "coordinator"))])
-def change_surgery_status(surgery_id: int, payload: SurgeryStatusUpdate, db: Session = Depends(get_db)):
+@app.patch("/surgeries/{surgery_id}/status", response_model=SurgeryOut, tags=["Cirugías"])
+def change_surgery_status(surgery_id: int, payload: SurgeryStatusUpdate, db: Session = Depends(get_db),
+                          actor: AppUser = Depends(require_roles("admin", "coordinator"))):
     surgery = db.scalar(select(Surgery).options(selectinload(Surgery.staff)).where(Surgery.id == surgery_id))
     if surgery is None:
         raise HTTPException(404, detail="Cirugía no encontrada")
@@ -291,6 +296,9 @@ def change_surgery_status(surgery_id: int, payload: SurgeryStatusUpdate, db: Ses
     if payload.status == SurgeryStatus.completed:
         room.status = "sanitizing"
     surgery.status = payload.status.value
+    db.execute(audit_events.insert().inline().values(
+        actor_id=actor.id, surgery_id=surgery.id, action="surgery.status_changed",
+    ))
     db.commit()
     return _surgery_response(surgery)
 

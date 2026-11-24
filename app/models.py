@@ -1,7 +1,7 @@
 """Modelo relacional del módulo PAB (incluye datos simulados de PAC/MED)."""
 from datetime import datetime
 
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Index, Integer, String, Table, Column
+from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Index, Integer, String, Table, Column, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .db import Base
@@ -12,6 +12,16 @@ surgery_staff = Table(
     Base.metadata,
     Column("surgery_id", ForeignKey("surgeries.id", ondelete="CASCADE"), primary_key=True),
     Column("staff_id", ForeignKey("medical_staff.id", ondelete="RESTRICT"), primary_key=True),
+)
+
+audit_events = Table(
+    "audit_events", Base.metadata,
+    Column("id", Integer, primary_key=True),
+    Column("occurred_at", DateTime(timezone=True), server_default=func.now(), nullable=False),
+    Column("actor_id", Integer, nullable=False),
+    Column("surgery_id", Integer, nullable=False),
+    Column("action", String(32), nullable=False),
+    CheckConstraint("action IN ('surgery.scheduled', 'surgery.status_changed')", name="ck_audit_event_action"),
 )
 
 

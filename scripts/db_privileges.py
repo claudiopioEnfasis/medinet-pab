@@ -46,6 +46,12 @@ def provision(create=False):
         cursor.execute(sql.SQL("GRANT SELECT, INSERT ON surgery_staff TO {}").format(role))
         cursor.execute(sql.SQL("GRANT SELECT ON app_users TO {}").format(role))
         cursor.execute(sql.SQL("GRANT UPDATE (failed_logins, locked_until_epoch) ON app_users TO {}").format(role))
+        cursor.execute("REVOKE ALL ON TABLE audit_events FROM PUBLIC")
+        cursor.execute(sql.SQL("REVOKE ALL ON TABLE audit_events FROM {}").format(role))
+        cursor.execute(sql.SQL("GRANT INSERT (actor_id, surgery_id, action) ON TABLE audit_events TO {}").format(role))
+        cursor.execute("REVOKE ALL ON SEQUENCE audit_events_id_seq FROM PUBLIC")
+        cursor.execute(sql.SQL("REVOKE ALL ON SEQUENCE audit_events_id_seq FROM {}").format(role))
+        cursor.execute(sql.SQL("GRANT USAGE ON SEQUENCE audit_events_id_seq TO {}").format(role))
         cursor.close()
     print("Permisos runtime aplicados; credenciales ocultas")
 
